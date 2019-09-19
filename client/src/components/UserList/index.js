@@ -55,8 +55,8 @@ class UserList extends React.Component {
                 console.log('RNP props',this.props)
                 return (
                     <li key={user.id}><Link to={{
-                        pathname:`/dashboard/routine/${user.id}`,
-                        state:{routines:user.routines}
+                        pathname:`/dashboard/bio/${user.id}`,
+                        state:{bios:user.bios}
                 }}>{user.name}</Link></li>
                 )
             })

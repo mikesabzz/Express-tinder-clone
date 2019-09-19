@@ -114,7 +114,7 @@ export const getFamousPerson = async ()=> {
 export const getNormalPerson = async (id)=> {
     try {
     
-        const response = await apiClient.get(`/app/routine/users/${id}`)
+        const response = await apiClient.get(`/api/bio/users/${id}`)
         const {user} = response.data
         console.log(this.state)
         console.log(this.props)
