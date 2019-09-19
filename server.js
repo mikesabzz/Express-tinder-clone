@@ -1,11 +1,3 @@
-// const express = require('express')
-// const app = express()
-// const port = 3000
-
-// app.get('/', (req, res) => res.send('Hello World!'))
-
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -64,11 +56,5 @@ app.use((err, req, res, next) => {
 
 
 
-/*
-// Generic error handler
-function errorHandler (err, req, res, next) {
-  res.status(500)
-  res.render('error', { error: err })
-}*/
 
  app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))
