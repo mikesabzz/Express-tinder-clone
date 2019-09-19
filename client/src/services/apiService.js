@@ -1,5 +1,6 @@
 import axios from 'axios'
-const BASE_URL = 'https://express-tinder-clone-app.herokuapp.com/'
+const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
+// 'https://express-tinder-clone-app.herokuapp.com/'
 
 const JWT_TOKEN = localStorage.getItem('token')
 

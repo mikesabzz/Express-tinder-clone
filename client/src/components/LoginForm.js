@@ -1,5 +1,6 @@
 import React from 'react'
 import {Redirect} from 'react-router'
+import './Login.css'
 
 class  LoginForm extends React.Component {
     constructor(props) {
@@ -50,7 +51,7 @@ handleTextInput = (event) => {
             return <Redirect to="/dashboard" />
         }
         return( 
-            <div>
+            <div className="login-form">
                 <h1>Login</h1>
                 { errorMessage}
                 <form className="form" onSubmit={this.handleSubmitForm}>

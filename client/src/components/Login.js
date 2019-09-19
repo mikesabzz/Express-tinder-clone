@@ -1,6 +1,6 @@
 import React from 'react'
 import LoginForm from './LoginForm'
-// import './Login.css'
+import './Login.css'
 
 function Login(props) {
     return(

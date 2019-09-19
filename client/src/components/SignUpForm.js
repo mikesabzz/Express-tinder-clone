@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { createSign } from 'crypto';
 import { Redirect } from 'react-router'
+import './Signup.css'
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class SignUpForm extends Component {
                         value={this.state.email}/>
                     </div>
                     <div>
-                        <label>password</label>
+                        <label>Password</label>
                         <input 
                         type="password" 
                         name="password"

@@ -1,0 +1,24 @@
+.signup {
+    justify-content: center;
+    margin: auto;
+    width: 20vh;
+    padding: 10px;
+    background-image: linear-gradient(to right top, #48869b, #40b7b9, #28a57f, #6cda78);
+    padding: 2vh 10vh 6vh 10vh;
+}
+
+.sign-up-form{
+    color: rgb(16, 14, 14);
+    font-weight: bold;
+    font-size: 18px;    
+}
+
+.sign-up-form input{
+    height: 3vh;
+    width: 24vh;
+}
+
+.sign-up-form label {
+    display: flex;
+    padding-top: 10px;
+}

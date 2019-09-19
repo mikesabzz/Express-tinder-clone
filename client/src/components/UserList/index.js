@@ -61,22 +61,18 @@ class UserList extends React.Component {
     }
 
     render() {
-        return( 
-        <div>
-            <h1>Welcome to Tinder</h1>
-            <h3>Find out whos near you</h3>
+        return (
+            <div className="dashboard">
+                <h1>Welcome to Tinder Friendly</h1>
+                <h3>Find out whos near you</h3>
+                <div className='button'>
+                    <Link className="create-bio-button" to='/dashboard/create'>Create Your Profile</Link>
+                </div>
                 <div className="people-list">
-                    
-                        {this.renderPerson()}
-                    
+                    {this.renderPerson()}
                 </div>
-                <div className= 'button-div'>
-                    <Link className= "create-bio-button" to='/dashboard/create'>Create New Bio</Link>
-                </div>
-            
-        </div>
+            </div>
         )
     }
 }
-
 export default UserList

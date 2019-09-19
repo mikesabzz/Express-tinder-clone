@@ -84,7 +84,7 @@ signUpUser = async (credentials) => {
           }
           {
             !isSignedIn ? (
-              <div><Link to="/login">Login</Link></div>
+              <div className="login_button"><Link to="/login">Login</Link></div>
             ) : (
               <Link onClick= {this.signOutUser}>Sign Out</Link>
             )
@@ -93,7 +93,7 @@ signUpUser = async (credentials) => {
 
         
           {!isSignedIn ? (
-              <div><Link to="/signup">Sign up</Link></div>
+              <div className="signup_button"><Link to="/signup">Sign up</Link></div>
             ) : (
               null
             )
@@ -103,9 +103,9 @@ signUpUser = async (credentials) => {
         <div>
         {!isSignedIn ? (
             <div>
-              <h2 className="title">Friendly Tinder</h2>
+              <h1 className="title">Friendly Tinder</h1>
               <br></br>
-              <h3 className="title-description">Meet New Friends Near You</h3>
+              <h2 className="greeting">Meet New Friends Near You</h2>
             </div>
           ) : (
               null

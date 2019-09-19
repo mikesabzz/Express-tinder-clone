@@ -1,0 +1,43 @@
+.dashboard {
+    border: 1px solid red;
+    background-image: url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Ftrulia%2Ffiles%2F2014%2F11%2Fhow-tell-love-new-neighborhood.jpg");
+}
+.dashboard h1, h3 {
+    color: black;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    opacity: 0.8;
+    margin: 27px 16vh 18px 16vh;
+    padding: 10px;
+}
+
+.people-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10vh 20vh 18px 20vh;
+    background-color: white;
+    opacity: 0.8;
+}
+.button {
+    font-size: 23px;
+    font-weight: bold;
+    background-color: green;
+    opacity: 0.9;
+    margin: 0 27vh 0 27vh;
+    padding: 12px;
+    border-radius: 20vh;
+}
+a:visited{
+    color: black;
+}
+a:link{
+    text-decoration: none;
+}
+.button:hover {
+    background-color: red;
+}
+.people-list:hover {
+    color: yellow;
+}
