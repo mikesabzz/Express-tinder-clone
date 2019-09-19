@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "12.9.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-    "client": "cd client && npm start",
     "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\"",
-    "db:init": "dropdb --if-exists routine_me && createdb routine_me",
+    "db:init": "dropdb --if-exists bio_user && createdb bio_user",
     "db:reset": "node ./scripts/resetDb.js",
     "db:seed": "node ./scripts/seedDb.js"
   },
@@ -30,6 +32,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "init": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "node": "^12.10.0",
