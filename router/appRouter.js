@@ -10,6 +10,8 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
       res.json({ user: req.user, message: 'authenticated'})
   }
 );
+
+
   
   appRouter.get('/bio', async (req, res) => {
     res.send( await Bio.findAll())
@@ -22,7 +24,7 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
   
   })
 
-  appRouter.get('/bio/users/demo', async (req, res) => {
+  appRouter.get('/bio/users/demos', async (req, res) => {
     try{
       const users = await User.findAll({
         include: [{

@@ -12,10 +12,10 @@ const apiClient = axios.create({
 })
 
 export const login = async (data) => {
-    console.log("hello", login)
     try {
         const response = await apiClient.post('/auth/login', data)
         const { token, user } = response.data
+
         localStorage.setItem('token', token)
         localStorage.setItem('userId', user.id)
         return user
@@ -111,10 +111,10 @@ export const getDemoUser = async ()=> {
     }
 }
 
-export const getNormalPerson = async (id)=> {
+export const getNewUser = async (id)=> {
     try {
     
-        const response = await apiClient.get(`/api/bio/users/${id}`)
+        const response = await apiClient.get(`/app/routine/users/${id}`)
         const {user} = response.data
         console.log(this.state)
         console.log(this.props)

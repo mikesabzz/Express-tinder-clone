@@ -103,9 +103,9 @@ signUpUser = async (credentials) => {
         <div>
         {!isSignedIn ? (
             <div>
-              <h2 className="title">Tinder</h2>
+              <h2 className="title">Friendly Tinder</h2>
               <br></br>
-              <h4 className="title-description">Find other users</h4>
+              <h3 className="title-description">Meet New Friends Near You</h3>
             </div>
           ) : (
               null

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { getDemoUser } from '../../services/apiService';
-import { getNormalPerson } from '../../services/apiService';
+import { getNewUser } from '../../services/apiService';
 import './UserList.css';
 
 
@@ -16,16 +16,17 @@ class UserList extends React.Component {
 
     async componentDidMount () {
         await this.getDemo() 
-        await this.getNormal ()
+        await this.getUser ()
     }
 
     getDemo = async () => {
         const data = await getDemoUser()
         this.setState({data})
+        console.log('getDemo', data)
     }
 
-    getNormal = async () => {
-        const data = await getNormalPerson()
+    getUser = async () => {
+        const data = await getNewUser()
         this.setState({data})
         
     }
@@ -44,12 +45,10 @@ class UserList extends React.Component {
         }
     }
 
-    renderNormalPerson= () => {
+    renderNewUser= () => {
        
         if(this.state.data){
             return this.state.data.map(user =>{
-                console.log('rendernormalperson',user)
-                // console.log(this.state)
                 console.log('RNP props',this.props)
                 return (
                     <li key={user.id}><Link to={{
@@ -65,6 +64,7 @@ class UserList extends React.Component {
         return( 
         <div>
             <h1>Welcome to Tinder</h1>
+            <h3>Find out whos near you</h3>
                 <div className="people-list">
                     
                         {this.renderPerson()}

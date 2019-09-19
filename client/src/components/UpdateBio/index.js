@@ -26,8 +26,8 @@ class UpdateBio extends React.Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        const { userId, name, bio } = this.state
-        const bios = { userId, name, bio };
+        const { userId, name, image, bio, location } = this.state
+        const bios = { userId, name, image, bio, location };
         const id = this.props.location.state.bioId
         await updateBio(id, bios);
 
@@ -41,8 +41,13 @@ class UpdateBio extends React.Component {
             <div className="update-bios">
                 <h1>Update Your Bio:</h1>
                 <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                    <label for="image">Image URL (.png/.jpg):</label>
+                    <input name="image" type="text" />
                     <label for="bio">Bio:</label>
                     <input name="bio" type="text" />
+                    <label for="location">Location:</label>
+                    <input name="location" type="text" />
+                    <div className="submit"><input type = "submit" /></div> 
                 </form>
             </div>
         );

@@ -27,8 +27,8 @@ class CreateBio extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    const { userId, name, bio } = this.state
-    const bios = { userId, name, bio};
+    const { userId, name, image, bio, location } = this.state
+    const bios = { userId, name, image, bio, location};
     await createBio(bios);
     this.setState({created: true})
   }
@@ -39,8 +39,13 @@ class CreateBio extends React.Component {
             <div className="bios">
                     <h1>Create Your Bio:</h1>
                     <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                        <label for="image">Image URL (.png/.jpg):</label>
+                        <input name="image" type="text" />
                         <label for="bio">Bio:</label>
                         <input name="bio" type="text" />
+                        <label for="location">Location:</label>
+                        <input name="location" type="text" />
+                        <div className="submit"><input type = "submit" /></div> 
                     </form>
             </div>
         );

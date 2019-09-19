@@ -16,7 +16,7 @@ const renderBios = () => {
     return props.location.state.bios.map(bio => {
       return (
         <div className="single-bio">
-          <div key={bio.id}>{bio.bio}
+          <div key={bio.id}><img alt="" src={bio.image} /> <p>{bio.bio}</p> <p>Located: {bio.location}</p>
           </div>
           <div>
             <button className="update-button" onClick={()=> props.history.push('/dashboard/bio/:bio_id/update', {bioId: bio.id})}>Update</button>
