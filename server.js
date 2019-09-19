@@ -34,7 +34,6 @@ app.use(express.static(path.join(__dirname, './client/build')));
 app.use('/auth', authRouter)
 app.use('/app',  /*authorized,*/ appRouter) // to reactive security
 
-app.use(passport.initialize())
 app.get('/', async (request, response) => {
   try {
     response.json({message: 'Welcome to Express Auth App!'})
@@ -42,6 +41,7 @@ app.get('/', async (request, response) => {
     response.status(e.status).json({ message: e.status }) 
   }
 })
+app.use(passport.initialize())
 
 // In production, any request that doesn't match a previous route
 // should send the front-end application, which will handle the route.
