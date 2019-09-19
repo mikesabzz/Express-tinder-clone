@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
-import { getFamousPerson } from '../../services/apiService';
+import { getDemoUser } from '../../services/apiService';
 import { getNormalPerson } from '../../services/apiService';
 import './UserList.css';
 
@@ -15,15 +15,13 @@ class UserList extends React.Component {
     }
 
     async componentDidMount () {
-        // Also get the logged in user and display below the famous people
-        await this.getFamous() 
+        await this.getDemo() 
         await this.getNormal ()
     }
 
-    getFamous = async () => {
-        const data = await getFamousPerson()
+    getDemo = async () => {
+        const data = await getDemoUser()
         this.setState({data})
-        console.log('getfamous', data)
     }
 
     getNormal = async () => {

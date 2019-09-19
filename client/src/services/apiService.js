@@ -96,12 +96,12 @@ export const getProfile = async () => {
     }
 }
 
-export const getFamousPerson = async ()=> {
+export const getDemoUser = async ()=> {
     try {
     
-        const response = await apiClient.get('/app/bio/users/famous')
+        const response = await apiClient.get('/app/bio/users/demos')
         // const {user} = response.data
-        console.log(getFamousPerson)
+        console.log(getDemoUser)
 
         // return user
         console.log(response)

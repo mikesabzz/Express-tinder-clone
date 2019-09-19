@@ -22,7 +22,7 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
   
   })
 
-  appRouter.get('/bio/users/famous', async (req, res) => {
+  appRouter.get('/bio/users/demo', async (req, res) => {
     try{
       const users = await User.findAll({
         include: [{

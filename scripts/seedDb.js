@@ -12,28 +12,28 @@ const seedDb = async () => {
       name: "Tom Brady",
       email: "tom@mail.com",
       password: 'password',
-      isfamous: true
+      demoUser: true
     })
 
     const leonardo = await User.create({
       name: "Leonardo DiCaprio",
       email: "leo@mail.com",
       password: 'password',
-      isfamous: true
+      demoUser: true
     });
 
     const margot = await User.create({
       name: "Margot Robbie",
       email: "margot@mail.com",
       password: 'password',
-      isfamous: true
+      demoUser: true
     });
 
     const angelina = await User.create({
         name: "Angelina Jolie",
         email: "angel@mail.com",
         password: 'password',
-        isfamous: true
+        demoUser: true
       });
 
     const bio1 = await Bio.create({

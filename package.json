@@ -13,7 +13,8 @@
     "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\"",
     "db:init": "dropdb --if-exists bio_user && createdb bio_user",
     "db:reset": "node ./scripts/resetDb.js",
-    "db:seed": "node ./scripts/seedDb.js"
+    "db:seed": "node ./scripts/seedDb.js",
+    "client": "cd client && npm start"
   },
   "repository": {
     "type": "git",

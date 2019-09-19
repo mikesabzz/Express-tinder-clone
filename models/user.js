@@ -13,7 +13,7 @@ module.exports = (db, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        isfamous: {
+        demoUser: {
             type: Sequelize.BOOLEAN
         }
     })
