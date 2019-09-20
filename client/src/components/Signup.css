@@ -24,3 +24,13 @@
     display: flex;
     padding-top: 10px;
 }
+.signup button {
+    background-image: linear-gradient(to left top, #b1b2aa, #d0d2c9, #d1d4cb, #d3d5ce, #d4d7d0, #b7bbb5);
+    border: black 2px solid;
+    margin-top: 18px;
+    width: 17vh;
+    height: 4vh;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 13px;
+}

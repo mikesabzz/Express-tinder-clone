@@ -38,8 +38,8 @@ class UpdateBio extends React.Component {
     render() {
         if (this.state.updated) { return <Redirect to="/dashboard"></Redirect> }
         return (
-            <div className="update-bios">
-                <h1>Update Your Bio:</h1>
+            <div className="update-profile">
+                <h1>Update Your Profile?</h1>
                 <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                     <label for="image">Image URL (.png/.jpg):</label>
                     <input name="image" type="text" />
@@ -47,7 +47,7 @@ class UpdateBio extends React.Component {
                     <input name="bio" type="text" />
                     <label for="location">Location:</label>
                     <input name="location" type="text" />
-                    <div className="submit"><input type = "submit" /></div> 
+                    <div className="submit"><input type="submit"/></div> 
                 </form>
             </div>
         );
