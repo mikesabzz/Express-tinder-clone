@@ -16,7 +16,8 @@ http://express-tinder-clone-app.surge.sh/
 ##### Software Used:
 - React, Node.js, Express, CSS/Flexbox
 
-![] (https://imgur.com/lxjaSGi.png)
+![](https://imgur.com/lxjaSGi.png)
+
 ![](https://imgur.com/msDunON.png)
 
 ### To run the app:
