@@ -38,7 +38,7 @@ const seedDb = async () => {
 
     const bio1 = await Bio.create({
         image: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Tom_Brady_2017.JPG",
-        bio: "Quarter back, New England Patriots, interests in females",
+        bio: "Quarter back, New England Patriots", 
         location: "Los Angelos"
     })
     const bio2 = await Bio.create({

@@ -1,6 +1,7 @@
 .dashboard {
-    border: 1px solid red;
     background-image: url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Ftrulia%2Ffiles%2F2014%2F11%2Fhow-tell-love-new-neighborhood.jpg");
+    background-size: cover;
+    padding: 10px;
 }
 .dashboard h1, h3 {
     color: black;
@@ -8,10 +9,15 @@
     justify-content: center;
     background-color: white;
     opacity: 0.8;
-    margin: 27px 16vh 18px 16vh;
+    margin: 27px 14vh 18px 14vh;
     padding: 10px;
+    font-family: 'Righteous', cursive;
+    letter-spacing: 2px;
+    animation: popout 1s ease;
+    -webkit-animation: popout 3s ease;
+    border-radius: 14px;
+    box-shadow: 14px 9px 16px rgb(74, 45, 45);
 }
-
 .people-list {
     display: flex;
     flex-direction: column;
@@ -19,6 +25,8 @@
     margin: 10vh 20vh 18px 20vh;
     background-color: white;
     opacity: 0.8;
+    border-radius: 20px;
+    box-shadow: 14px 9px 16px rgb(74, 45, 45);
 }
 .button {
     font-size: 23px;

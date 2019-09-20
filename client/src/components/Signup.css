@@ -3,8 +3,10 @@
     margin: auto;
     width: 20vh;
     padding: 10px;
-    background-image: linear-gradient(to right top, #48869b, #40b7b9, #28a57f, #6cda78);
+    background-image: linear-gradient(to left top, #5a5a52, #76766e, #93948b, #b1b2aa, #d0d2c9, #d1d4cb, #d3d5ce, #d4d7d0, #b7bbb5, #9ca09c, #818682, #686d6a);
     padding: 2vh 10vh 6vh 10vh;
+    border-radius: 50px;
+    box-shadow: -5px 10px 3px #888888;
 }
 
 .sign-up-form{

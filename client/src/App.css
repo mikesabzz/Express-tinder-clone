@@ -3,7 +3,7 @@
 .App {
   text-align: center;
 }
-.signup_button{
+.signup-button{
   display: flex;
   width: 13vh;
   height: 5vh;
@@ -11,9 +11,13 @@
   background-color: orange;
   padding-top: 12px;
   justify-content: center;
-
+  font-family: 'Righteous', cursive;
+  border-radius: 13px;
 }
-.login_button {
+.signup-button:hover{
+  background-color: peru;
+}
+.login-button {
   display: flex;
   width: 13vh;
   height: 5vh;
@@ -21,6 +25,11 @@
   background-color: orange;
   padding-top: 12px;
   justify-content: center;
+  font-family: 'Righteous', cursive;
+  border-radius: 13px;
+}
+.login-button:hover {
+  background-color: peru;
 }
 .title {
   display: flex;
@@ -41,11 +50,29 @@
   80%{-webkit-transform:scale(1.2)}
   to{-webkit-transform:scale(1)}
 }
-
 .greeting {
   letter-spacing: 1px;
   font-size: 4vh;
   font-family: 'Righteous', cursive;
   animation: popout 1s ease;
-
+}
+.signoff-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 10vh 20px 70vh;
+  font-size: 25px;
+  font-weight: bold;
+}
+.dashboard-button {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 70vh 0 10vh;
+  font-size: 20px;
+  font-weight: bold;
+}
+a:hover {
+  color: rgb(52, 52, 210);
+}
+body {
+  background-color: #6FC7F0;
 }

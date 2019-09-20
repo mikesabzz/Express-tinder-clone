@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Cute+Font&display=swap');
 .single-bio img{
     width: 50vh;
     height: auto;
+    border: inset white 8px;
+}
+.single-bio {
+    font-size: 40px;
+    font-family: 'Cute Font', cursive;
+}
+.update-button img{
+   width: 6vh;
+   height: auto;
+}
+.delete-button img{
+    width: 6vh;
+    height: auto;
+
 }

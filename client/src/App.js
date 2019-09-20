@@ -75,25 +75,26 @@ signUpUser = async (credentials) => {
     
     return (
       <div className="App">
-  
         <nav>
           {
             isSignedIn &&
-            <div><Link to="/dashboard">Dashboard</Link></div>
+            <div className="dashboard-button">
+              <Link to="/dashboard">Dashboard</Link>
+            </div>
 
           }
           {
             !isSignedIn ? (
-              <div className="login_button"><Link to="/login">Login</Link></div>
+              <div className="login-button"><Link to="/login">Login</Link></div>
             ) : (
-              <Link onClick= {this.signOutUser}>Sign Out</Link>
+              <div className="signoff-button"><Link onClick= {this.signOutUser}>Sign Off</Link></div>
             )
           
           }
 
         
           {!isSignedIn ? (
-              <div className="signup_button"><Link to="/signup">Sign up</Link></div>
+              <div className="signup-button"><Link to="/signup">Sign up</Link></div>
             ) : (
               null
             )
@@ -118,9 +119,7 @@ signUpUser = async (credentials) => {
             path="/dashboard" 
             user={user}
             component={Dashboard} 
-          
           />
-          
           <Route 
             path="/login"
             render={(props) => <Login  {...props} handleLogin={this.loginUser} isSignedIn={isSignedIn}/>} 
@@ -130,7 +129,6 @@ signUpUser = async (credentials) => {
             render = {(props) => <Signup {...props} handleSignUp={this.signUpUser} isSignedIn={isSignedIn} />}
           />
         </main>
-          
       </div>
     );
   }

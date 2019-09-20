@@ -36,12 +36,12 @@ class CreateBio extends React.Component {
     render() {
         if (this.state.created){return <Redirect to="/dashboard"></Redirect>}
         return (
-            <div className="bios">
-                    <h1>Create Your Bio:</h1>
+            <div className="profile-create">
+                    <h1>Create Your Profile:</h1>
                     <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                         <label for="image">Image URL (.png/.jpg):</label>
                         <input name="image" type="text" />
-                        <label for="bio">Bio:</label>
+                        <label for="bio">Description:</label>
                         <input name="bio" type="text" />
                         <label for="location">Location:</label>
                         <input name="location" type="text" />
