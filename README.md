@@ -22,8 +22,6 @@ http://express-tinder-clone-app.surge.sh/
 
 ### To run the app:
 * Git clone
-* npm run db:reset
-* npm run db:seed
 * npm run start
 * cd client
 * npm run start
