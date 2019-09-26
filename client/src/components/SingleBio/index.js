@@ -17,13 +17,16 @@ const renderBios = () => {
         <div className="single-bio">
           <div key={bio.id}><img alt="" src={bio.image} /> <p>{bio.bio}</p> <p>Located: {bio.location}</p>
           </div>
-          <div>
+          {localStorage.getItem('userId') == props.match.params.id ?
+          (<div>
             <button className="update-button" onClick={()=> props.history.push('/dashboard/bio/:bio_id/update', {bioId: bio.id})}><img src="https://www.shareicon.net/data/512x512/2015/12/19/689669_arrows_512x512.png" alt=""></img></button>
-          </div>
           <br />
-          <div>
             <button className="delete-button" onClick={() => handleDelete(bio.id)}><img src="https://pngimage.net/wp-content/uploads/2018/05/delete-symbol-png-8.png" alt=""></img></ button>
           </div>
+          ) : (
+            <div></div>
+          )   
+          }       
         </div>
       )
     })
