@@ -43,8 +43,8 @@ class UpdateBio extends React.Component {
                 <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                     <label for="image">Image URL (.png/.jpg):</label>
                     <input name="image" type="text" />
-                    <label for="bio">Bio:</label>
-                    <input name="bio" type="text" />
+                    <label for="bio">Description:</label>
+                    <textarea name="bio" type="text" />
                     <label for="location">Location:</label>
                     <input name="location" type="text" />
                     <div className="submit"><input type="submit"/></div> 

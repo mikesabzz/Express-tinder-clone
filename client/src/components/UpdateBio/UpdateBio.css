@@ -6,9 +6,15 @@
 }
 .update-profile input {
     margin: 13px;
-    padding-right: 30vh;
     padding-bottom: 10px;
-    font-size: 13px;
+    font-size: 17px;
+    width: 50vh;
+}
+.update-profile textarea {
+    margin: 13px;
+    font-size: 17px;
+    width: 50vh;
+    height: 20vh;
 }
 .submit input{
     background-color: peru;

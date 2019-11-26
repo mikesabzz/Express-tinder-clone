@@ -41,8 +41,11 @@ class CreateBio extends React.Component {
                     <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                         <label for="image">Image URL (.png/.jpg):</label>
                         <input name="image" type="text" />
+                        <br />
                         <label for="bio">Description:</label>
-                        <input name="bio" type="text" />
+                        <br />
+                        <textarea name="bio" type="text" />
+                        <br />
                         <label for="location">Location:</label>
                         <input name="location" type="text" />
                         <div className="submit"><input type = "submit" /></div> 
