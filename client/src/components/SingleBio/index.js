@@ -15,7 +15,12 @@ const renderBios = () => {
     return props.location.state.bios.map(bio => {
       return (
         <div className="single-bio">
-          <div key={bio.id}><img alt="" src={bio.image} /> <p>{bio.bio}</p> <p>Located: {bio.location}</p>
+          <div key={bio.id}>
+            <img alt="" src={bio.image} /> 
+            <p>{bio.bio}</p> 
+            <p>Gender: {bio.gender}</p>
+            <p>Interests: {bio.gender_preference}</p>
+            <p>Located: {bio.location}</p>
           </div>
           {localStorage.getItem('userId') == props.match.params.id ?
           (<div>

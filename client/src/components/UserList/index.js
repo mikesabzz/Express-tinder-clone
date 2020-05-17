@@ -31,22 +31,20 @@ class UserList extends React.Component {
         
     }
 
-    renderPerson= () => {
-        if(this.state.data){
-            return this.state.data.map(user =>{
-                
+    renderPerson = () => {
+        if (this.state.data) {
+            return this.state.data.map(user => {
                 return (
-                    <h2 key={user.id}><Link className ="peoples-list" to={{
-                        pathname:`/dashboard/bio/${user.id}`,
-                        state:{bios:user.bios}
-                }}>{user.name}</Link></h2>
+                    <h2 key={user.id}><Link className="peoples-list" to={{
+                        pathname: `/dashboard/bio/${user.id}`,
+                        state: { bios: user.bios }
+                    }}>{user.name}</Link></h2>
                 )
             })
         }
     }
 
     renderNewUser= () => {
-       
         if(this.state.data){
             return this.state.data.map(user =>{
                 console.log('RNP props',this.props)
@@ -54,8 +52,8 @@ class UserList extends React.Component {
                     <li key={user.id}><Link to={{
                         pathname:`/dashboard/bio/${user.id}`,
                         state:{bios:user.bios}
-                }}>{user.name}</Link></li>
-                )
+                    }}>{user.name}</Link></li>
+                    )
             })
         }
     }

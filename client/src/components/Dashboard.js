@@ -18,9 +18,10 @@ class Dashboard extends React.Component {
 
     render() {
         const { user } = this.props
-
+        console.log("user", user)
         return( 
             <div className="bio">
+                <h1>{`Whats up, ${user.name}`}</h1>
                 <Switch>
                     <Route exact path="/dashboard/" component={UserList} />
                     <Route exact path='/dashboard/bio/:id' render={(props)=> <SingleBio {...props}/>}/>

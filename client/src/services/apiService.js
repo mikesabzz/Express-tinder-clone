@@ -1,6 +1,5 @@
 import axios from 'axios'
-// const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
-const BASE_URL = 'https://express-tinder-clone-app.herokuapp.com/'
+const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
 
 const JWT_TOKEN = localStorage.getItem('token')
 
@@ -19,6 +18,7 @@ export const login = async (data) => {
 
         localStorage.setItem('token', token)
         localStorage.setItem('userId', user.id)
+        console.log(user)
         return user
 
     } catch(e) {
@@ -116,8 +116,6 @@ export const getNewUser = async (id)=> {
     
         const response = await apiClient.get(`/app/routine/users/${id}`)
         const {user} = response.data
-        console.log(this.state)
-        console.log(this.props)
         console.log(user)
         // return user
         

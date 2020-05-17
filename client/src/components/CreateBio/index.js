@@ -2,7 +2,6 @@ import React from 'react';
 import './CreateBio.css';
 import { Redirect } from 'react-router-dom';
 import { createBio } from '../../services/apiService'
-import './CreateBio.css'
 
 class CreateBio extends React.Component {
     constructor(props) {

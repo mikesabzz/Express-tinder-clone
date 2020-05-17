@@ -30,12 +30,39 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
         include: [{
           model: Bio
         }]
-  
       })
       res.send(users)
 
     }catch(error){
 
+      throw error
+    }
+  })
+
+  appRouter.get('/bio/gender/male', async (req, res) => {
+    try{
+      const males = await User.findAll({
+        where: {
+          [Bio.and]: [
+            { gender: 'male' }
+          ]
+        }
+      })
+      res.send(males)
+    }catch(error){
+      throw error
+    }
+  })
+  
+  appRouter.get('/bio/gender/female', async (req, res) => {
+    try{
+      const users = await Bio.findAll({
+        where: {
+          gender: 'female'
+        }
+      })
+      res.send(users)
+    }catch(error){
       throw error
     }
   })
