@@ -14,7 +14,6 @@ const seedDb = async () => {
       password: 'password',
       gender: "male",
       gender_preference: "women",
-      demoUser: true
     })
 
     const leonardo = await User.create({
@@ -23,7 +22,6 @@ const seedDb = async () => {
       password: 'password',
       gender: "male",
       gender_preference: "women",
-      demoUser: true
     });
 
     const margot = await User.create({
@@ -32,7 +30,6 @@ const seedDb = async () => {
       password: 'password',
       gender: "female",
       gender_preference: "men",
-      demoUser: true
     });
 
     const angelina = await User.create({
@@ -41,7 +38,7 @@ const seedDb = async () => {
         password: 'password',
         gender: "female",
         gender_preference: "men",
-        demoUser: true
+
       });
 
     const bio1 = await Bio.create({

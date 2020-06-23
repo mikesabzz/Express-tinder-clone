@@ -18,7 +18,6 @@ class Dashboard extends React.Component {
 
     render() {
         const { user } = this.props
-        console.log(user)
         return( 
             <div className="bio">
                 <h1>{`Whats up, ${user.name}`}</h1>

@@ -89,7 +89,6 @@ class UserList extends React.Component {
     }
 
     render() {
-        console.log('username', this.props.user)
         return (
             <div className="dashboard">
                 <h1>Welcome to Tinder Friendly</h1>

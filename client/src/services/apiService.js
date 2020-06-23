@@ -64,7 +64,6 @@ export const updateBio = async (bioId, data) => {
     try {
         let userId = localStorage.getItem('userId')
         const response = await apiClient.put(`/app/bios/user/${userId}/update/${bioId}`, data)
-    
         return response
         
     } catch (e) {
@@ -76,7 +75,6 @@ export const updateBio = async (bioId, data) => {
 export const deleteBio = async (bioId, data) => {
     try {
         const response = await apiClient.delete(`/app/bio/${bioId}/delete`, data)
-    
         return response;
     } catch (e) {
         throw e
@@ -88,7 +86,6 @@ export const getProfile = async () => {
     try {
         const response = await apiClient.get('/app/profile')
         const {user} = response.data
-
         return user
 
     } catch(e) {
@@ -98,11 +95,7 @@ export const getProfile = async () => {
 
 export const getDemoUser = async ()=> {
     try {
-    
         const response = await apiClient.get('/app/bio/users/demos')
-        // const {user} = response.data
-
-        // return user
         return response.data
     } catch(e) {
         throw e
@@ -121,22 +114,6 @@ export const getFemaleUsers = async ()=> {
         const response = await apiClient.get('/app/bio/gender/female')
         return response.data
     } catch(e) {
-        throw e
-    }
-}
-
-export const getNewUser = async (id)=> {
-    try {
-    
-        const response = await apiClient.get(`/app/bio/users/${id}`)
-        const {user} = response.data
-        console.log(user)
-        // return user
-        
-        console.log(response)
-
-        return response.data
-    } catch(e){
         throw e
     }
 }
