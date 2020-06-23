@@ -37,7 +37,7 @@ User.beforeCreate(async (user, options) => {
 });
 
 const Bio = BioModel(db,Sequelize)
-User.hasMany(Bio)
+User.hasOne(Bio)
 Bio.belongsTo(User)
 
 module.exports = {

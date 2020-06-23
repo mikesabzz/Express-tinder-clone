@@ -1,6 +1,8 @@
 module.exports = (db, Sequelize) => {
     return db.define('user', {
         name: Sequelize.STRING,
+        gender: Sequelize.STRING,
+        gender_preference: Sequelize.STRING,
         email: {
             type: Sequelize.STRING,
             allowNull: false,
@@ -13,8 +15,6 @@ module.exports = (db, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        gender: Sequelize.STRING,
-        gender_preference: Sequelize.STRING,
     })
 
 
