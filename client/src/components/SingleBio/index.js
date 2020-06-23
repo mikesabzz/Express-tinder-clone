@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './SingleBio.css';
 import {deleteBio} from '../../services/apiService';
 
@@ -13,6 +14,13 @@ const renderBios = () => {
 
   if(props.location.state){
     const bios = props.location.state.bios
+    if (typeof bios == 'undefined') {
+      return (
+      <div className='button'>
+        <Link className="create-bio-button" to='/dashboard/create'>Create Your Profile</Link>
+      </div>
+      )
+    } else {
       return (
         <div className="single-bio">
           <div key={bios.id}>
@@ -35,6 +43,7 @@ const renderBios = () => {
           }       
         </div>
       )
+    }
   }
 }
     return (

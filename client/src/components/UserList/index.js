@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
     getDemoUser, 
     getMaleUsers, 
@@ -37,11 +37,10 @@ class UserList extends React.Component {
         const females = await getFemaleUsers()
         this.setState({females})
     }
-
+    
     renderMale = () => {
         if(this.state.males) {
             return this.state.males.map(male => {
-                console.log(male)
                 return (
                     <div>
                         <img className="users-image" src={male.bio.image} alt="no img" />
@@ -106,9 +105,9 @@ class UserList extends React.Component {
                 <h1>{`Whats up, ${this.props.user.name}`}</h1>
                 <h1>Welcome to Tinder Friendly</h1>
                 <h3>Find out whos near you</h3>
-                <div className='button'>
+                {/* <div className='button'>
                     <Link className="create-bio-button" to='/dashboard/create'>Create Your Profile</Link>
-                </div>
+                </div> */}
                 { (this.props.user.gender_preference == 'men') ? 
                 <div className="people-list">{this.renderMale()}</div> :
                 (this.props.user.gender_preference == 'women') ?
