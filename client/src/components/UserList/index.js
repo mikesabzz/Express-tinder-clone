@@ -6,6 +6,7 @@ import {
     getFemaleUsers 
 } from '../../services/apiService';
 import './UserList.css';
+import { use } from 'passport';
 
 
 class UserList extends React.Component {
@@ -77,9 +78,10 @@ class UserList extends React.Component {
     renderAll = () => {
         if (this.state.data) {
             return this.state.data.map(user => {
+                const image = typeof (user.bio) === null ? "No Image" : user.bio
                 return (
                     <div key={user.id}>
-                        <img className="users-image" src={user.bio.image} alt="no img" />
+                        <img className="users-image" src={image} alt="no img" />
                         <h2 key={user.id}><Link className="peoples-list" to={{
                             pathname: `/dashboard/bio/${user.id}`,
                             state: {
@@ -95,19 +97,18 @@ class UserList extends React.Component {
 
     render() {
         const name = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].name
-        const genderInterest = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].bio.gender_preference
-        const createProfle = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].bio
-        console.log('hello', typeof createProfle)
+        const genderInterest = (this.props.user[0]) == null ? "loading..." : this.props.user[0].bio.gender_preference
+        // const createProfle = (this.props.user[0]) === null ? "loading..." : this.props.user[0].bio
         return (
             <div className="dashboard">
                 <h1>{`Whats up, ${name}`}</h1>
                 <h1>Welcome to Tinder Friendly</h1>
                 <h3>Find out whos near you</h3>
-                {/* {typeof createProfle === 'undefined' ?             */}
+                {typeof createProfle === 'undefined' ?            
                 <div className='button'>
                     <Link className="create-bio-button" to='/dashboard/create'>Create Your Profile</Link>
                 </div> : ""
-                {/* } */}
+                }
                 { 
                 (genderInterest == 'men') ? 
                 <div className="people-list">{this.renderMale()}</div> :

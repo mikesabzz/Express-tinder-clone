@@ -26,8 +26,8 @@ class CreateBio extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    const { userId, name, image, bio, location } = this.state
-    const bios = { userId, name, image, bio, location};
+    const { userId, name, image, bio, gender, gender_preference, location } = this.state
+    const bios = { userId, name, image, bio, gender, gender_preference, location};
     await createBio(bios);
     this.setState({created: true})
   }
@@ -38,14 +38,26 @@ class CreateBio extends React.Component {
             <div className="profile-create">
                     <h1>Create Your Profile:</h1>
                     <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                        <label for="image">Image URL (.png/.jpg):</label>
+                        <label htmlFor="image">Image URL (.png/.jpg):</label>
                         <input name="image" type="text" />
                         <br />
-                        <label for="bio">Description:</label>
+                        <label htmlFor="bio">Description:</label>
                         <br />
                         <textarea name="bio" type="text" />
                         <br />
-                        <label for="location">Location:</label>
+                        <label htmlFor="gender">Gender:</label>
+                        <select>
+                          <option name="gender">male</option>
+                          <option name="gender">female</option>
+                        </select>
+                        <label htmlFor="gender_preference">Gender Interest:</label>
+                        <select>
+                          <option name="gender_preference">men</option>
+                          <option name="gender_preference">women</option>
+                          <option name="gender_preference">both</option>
+                        </select>
+                        <br />
+                        <label htmlFor="location">Location:</label>
                         <input name="location" type="text" />
                         <div className="submit"><input type = "submit" /></div> 
                     </form>

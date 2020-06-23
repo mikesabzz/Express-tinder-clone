@@ -10,8 +10,6 @@ class SignUpForm extends Component {
             name: '',
             email: '',
             password: '',
-            gender: '',
-            gender_preference: '',
             showError: false
         }
     }
@@ -22,17 +20,10 @@ class SignUpForm extends Component {
             name, 
             email, 
             password, 
-            gender, 
-            gender_preference 
         } = this.state
         const  { handleSignUp } = this.props;
-        console.log(this.props);
-
         try {
-
-            await handleSignUp({
-                name, email, password, gender, gender_preference 
-            })
+            await handleSignUp({name, email, password})
         } catch(e) {
             this.setState(state => {
                 return { showError : true}
@@ -65,23 +56,6 @@ class SignUpForm extends Component {
                         onChange={this.handleTextInput}
                         value ={this.state.name}/>
                     </div>
-                    <div>
-                        <label>Gender</label>
-                        <input 
-                        type="text" 
-                        name='gender'
-                        onChange={this.handleTextInput}
-                        value ={this.state.gender}/>
-                    </div>
-                    <div>
-                        <label>Interest</label>
-                        <input 
-                        type="text" 
-                        name='gender_preference'
-                        onChange={this.handleTextInput}
-                        value ={this.state.gender_preference}/>
-                    </div>
-                   
                     <div>
                         <label>Email</label>
                         <input 
