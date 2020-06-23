@@ -58,7 +58,6 @@ class UserList extends React.Component {
     }
     renderFemale = () => {
         if(this.state.females) {
-            console.log(this.state.females)
             return this.state.females.map(female => {
                 return (
                     <div key={female.id}>
@@ -80,7 +79,7 @@ class UserList extends React.Component {
             return this.state.data.map(user => {
                 return (
                     <div key={user.id}>
-                        {/* <img className="users-image" src={user.bio.image} alt="no img" /> */}
+                        <img className="users-image" src={user.bio.image} alt="no img" />
                         <h2 key={user.id}><Link className="peoples-list" to={{
                             pathname: `/dashboard/bio/${user.id}`,
                             state: {
@@ -96,23 +95,26 @@ class UserList extends React.Component {
 
     render() {
         const name = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].name
-        const bios = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].bio.gender_preference
-        console.log(bios)
+        const genderInterest = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].bio.gender_preference
+        const createProfle = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].bio
+        console.log('hello', typeof createProfle)
         return (
             <div className="dashboard">
                 <h1>{`Whats up, ${name}`}</h1>
                 <h1>Welcome to Tinder Friendly</h1>
                 <h3>Find out whos near you</h3>
-                <div>{this.renderFemale()}</div>
-                {/* <div className='button'>
+                {/* {typeof createProfle === 'undefined' ?             */}
+                <div className='button'>
                     <Link className="create-bio-button" to='/dashboard/create'>Create Your Profile</Link>
-                </div> */}
-                {/* { (bios == 'men') ? 
+                </div> : ""
+                {/* } */}
+                { 
+                (genderInterest == 'men') ? 
                 <div className="people-list">{this.renderMale()}</div> :
-                (bios == 'women') ?
+                (genderInterest == 'women') ?
                 <div className="people-list">{this.renderFemale()}</div> :
                 <div className="people-list">{this.renderAll()}</div>
-                } */}
+                }
             </div>
         )
     }
