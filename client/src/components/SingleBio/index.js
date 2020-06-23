@@ -12,21 +12,22 @@ const  SingleBio = (props) =>  {
 const renderBios = () => {
 
   if(props.location.state){
-    return props.location.state.bios.map(bio => {
+    const bios = props.location.state.bios
       return (
         <div className="single-bio">
-          <div key={bio.id}>
-            <img alt="" src={bio.image} /> 
-            <p>{bio.bio}</p> 
+          <div key={bios.id}>
+            <img alt="" src={bios.image} /> 
+            <h2>{props.location.state.name}</h2>
+            <p>{bios.bio}</p> 
             <p>Gender: {props.location.state.gender}</p>
             <p>Interests: {props.location.state.gender_preference}</p>
-            <p>Located: {bio.location}</p>
+            <p>Located: {bios.location}</p>
           </div>
           {localStorage.getItem('userId') == props.match.params.id ?
           (<div>
-            <button className="update-button" onClick={()=> props.history.push('/dashboard/bio/:bio_id/update', {bioId: bio.id})}><img src="https://www.shareicon.net/data/512x512/2015/12/19/689669_arrows_512x512.png" alt=""></img></button>
+            <button className="update-button" onClick={()=> props.history.push('/dashboard/bio/:bio_id/update', {bioId: bios.id})}><img src="https://www.shareicon.net/data/512x512/2015/12/19/689669_arrows_512x512.png" alt=""></img></button>
           <br />
-            <button className="delete-button" onClick={() => handleDelete(bio.id)}><img src="https://pngimage.net/wp-content/uploads/2018/05/delete-symbol-png-8.png" alt=""></img></ button>
+            <button className="delete-button" onClick={() => handleDelete(bios.id)}><img src="https://pngimage.net/wp-content/uploads/2018/05/delete-symbol-png-8.png" alt=""></img></ button>
           </div>
           ) : (
             <div></div>
@@ -34,7 +35,6 @@ const renderBios = () => {
           }       
         </div>
       )
-    })
   }
 }
     return (

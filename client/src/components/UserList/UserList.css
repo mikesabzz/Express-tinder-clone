@@ -18,7 +18,7 @@
     border-radius: 14px;
     box-shadow: 14px 9px 16px rgb(74, 45, 45);
 }
-.people-list {
+.people-list{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,6 +27,11 @@
     opacity: 0.8;
     border-radius: 20px;
     box-shadow: 14px 9px 16px rgb(74, 45, 45);
+}
+.users-image{
+    width: 10pc;
+    height: auto;
+    border-radius: 35%;
 }
 .button {
     font-size: 23px;
