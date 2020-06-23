@@ -7,7 +7,19 @@ const { Bio, User } = require('../models');
 
 appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
   async(req, res) => {
-      res.json({ user: req.user, message: 'authenticated'})
+      try{
+        const username = await User.findAll({
+          where: {
+            id: `${req.user.id}`
+        },
+          include: [{
+            model: Bio
+          }]
+        })
+        res.json({ user: username,  message: 'authenticated'})
+      } catch(e){
+        console.error(e)
+      }
   }
 );
 
