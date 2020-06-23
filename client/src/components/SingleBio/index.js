@@ -18,8 +18,8 @@ const renderBios = () => {
           <div key={bio.id}>
             <img alt="" src={bio.image} /> 
             <p>{bio.bio}</p> 
-            <p>Gender: {bio.gender}</p>
-            <p>Interests: {bio.gender_preference}</p>
+            <p>Gender: {props.location.state.gender}</p>
+            <p>Interests: {props.location.state.gender_preference}</p>
             <p>Located: {bio.location}</p>
           </div>
           {localStorage.getItem('userId') == props.match.params.id ?

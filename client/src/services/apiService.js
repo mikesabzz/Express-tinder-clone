@@ -1,6 +1,6 @@
 import axios from 'axios'
-const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
-
+// const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
+const BASE_URL = 'http://localhost:8001'
 const JWT_TOKEN = localStorage.getItem('token')
 
 const apiClient = axios.create({
@@ -101,10 +101,24 @@ export const getDemoUser = async ()=> {
     
         const response = await apiClient.get('/app/bio/users/demos')
         // const {user} = response.data
-        console.log(getDemoUser)
 
         // return user
-        console.log(response)
+        return response.data
+    } catch(e) {
+        throw e
+    }
+}
+export const getMaleUsers = async ()=> {
+    try {
+        const response = await apiClient.get('/app/bio/gender/male')
+        return response.data
+    } catch(e) {
+        throw e
+    }
+}
+export const getFemaleUsers = async ()=> {
+    try {
+        const response = await apiClient.get('/app/bio/gender/female')
         return response.data
     } catch(e) {
         throw e
@@ -114,7 +128,7 @@ export const getDemoUser = async ()=> {
 export const getNewUser = async (id)=> {
     try {
     
-        const response = await apiClient.get(`/app/routine/users/${id}`)
+        const response = await apiClient.get(`/app/bio/users/${id}`)
         const {user} = response.data
         console.log(user)
         // return user

@@ -72,7 +72,6 @@ signUpUser = async (credentials) => {
 
   render() {
     const { isSignedIn , user} = this.state
-    
     return (
       <div className="App">
         <nav>

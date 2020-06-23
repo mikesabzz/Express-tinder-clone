@@ -43,10 +43,11 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
     try{
       const males = await User.findAll({
         where: {
-          [Bio.and]: [
-            { gender: 'male' }
-          ]
-        }
+            gender: 'male'
+        },
+        include: [{
+          model: Bio
+        }] 
       })
       res.send(males)
     }catch(error){
@@ -56,10 +57,13 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
   
   appRouter.get('/bio/gender/female', async (req, res) => {
     try{
-      const users = await Bio.findAll({
+      const users = await User.findAll({
         where: {
           gender: 'female'
-        }
+        },
+        include: [{
+          model: Bio
+        }] 
       })
       res.send(users)
     }catch(error){
