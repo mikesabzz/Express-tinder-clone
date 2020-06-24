@@ -2,6 +2,7 @@ import React from 'react';
 import './CreateBio.css';
 import { Redirect } from 'react-router-dom';
 import { createBio } from '../../services/apiService'
+import { type } from 'os';
 
 class CreateBio extends React.Component {
     constructor(props) {
@@ -11,17 +12,21 @@ class CreateBio extends React.Component {
         this.state = {
             created: false,
             name: '',
-            userId: props.user.id
+            userId: props.user.id,
+            gender: '',
+            gender_preference: ''
         }
     }
 
 
   handleChange = (e) => {
     const currentElement = e.target
-    const { name, value } = currentElement
+    const { name, value, type, checked } = currentElement
     const newState = {};
     newState[name] = value
     this.setState(newState)
+    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
+    console.log(currentElement.value)
   }
 
   handleSubmit = async (e) => {
@@ -37,7 +42,7 @@ class CreateBio extends React.Component {
         return (
             <div className="profile-create">
                     <h1>Create Your Profile:</h1>
-                    <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                    <form onChange={this.handleChange} value={this.state.selectedValue} onSubmit={this.handleSubmit}>
                         <label htmlFor="image">Image URL (.png/.jpg):</label>
                         <input name="image" type="text" />
                         <br />
@@ -45,17 +50,51 @@ class CreateBio extends React.Component {
                         <br />
                         <textarea name="bio" type="text" />
                         <br />
-                        <label htmlFor="gender">Gender:</label>
-                        <select>
-                          <option name="gender">male</option>
-                          <option name="gender">female</option>
-                        </select>
-                        <label htmlFor="gender_preference">Gender Interest:</label>
-                        <select>
-                          <option name="gender_preference">men</option>
-                          <option name="gender_preference">women</option>
-                          <option name="gender_preference">both</option>
-                        </select>
+              <span>
+                Gender:
+                <label htmlFor="gender">male
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={this.state.gender === "male"}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label htmlFor="gender">female
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    checked={this.state.gender === "female"}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </span>
+                            
+
+              <span>
+                Gender Interest:
+                <label htmlFor="gender_preference">men
+                  <input
+                    type="radio"
+                    name="gender_preference"
+                    value="men"
+                    checked={this.state.gender_preference === "men"}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label htmlFor="gender_preference">women
+                  <input
+                    type="radio"
+                    name="gender_preference"
+                    value="women"
+                    checked={this.state.gender_preference === "women"}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </span>  
+                        
                         <br />
                         <label htmlFor="location">Location:</label>
                         <input name="location" type="text" />

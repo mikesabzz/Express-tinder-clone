@@ -86,7 +86,7 @@ signUpUser = async (credentials) => {
             !isSignedIn ? (
               <div className="login-button"><Link to="/login">Login</Link></div>
             ) : (
-              <div className="signoff-button"><Link onClick={this.signOutUser}>Sign Off</Link></div>
+              <div className="signoff-button"><button onClick={this.signOutUser}>Sign Off</button></div>
             )
           
           }

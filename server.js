@@ -8,7 +8,7 @@ require('dotenv').config()
 
 const authRouter = require('./router/authRouter')
 const appRouter = require('./router/appRouter')
-const { authorized} = require('./auth/auth')
+// const { authorized} = require('./auth/auth')
 const passport = require('passport')
 
 

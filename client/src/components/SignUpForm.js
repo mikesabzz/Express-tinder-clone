@@ -41,7 +41,7 @@ class SignUpForm extends Component {
     render() {
         const { isSignedIn} = this.props
         if (isSignedIn) {
-            return <Redirect to="/dashboard" />
+            return <Redirect to="/dashboard/create" />
         }
 
         return(
