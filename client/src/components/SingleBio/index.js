@@ -1,14 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './SingleBio.css';
-import {deleteBio} from '../../services/apiService';
 
 const  SingleBio = (props) =>  {
-
-  const handleDelete = async (id) => {
-    await deleteBio(id);
-    await props.history.push(`/dashboard`)
-  }
 
 const renderBios = () => {
 
@@ -33,9 +27,13 @@ const renderBios = () => {
           </div>
           {localStorage.getItem('userId') == props.match.params.id ?
           (<div>
-            <button className="update-button" onClick={()=> props.history.push('/dashboard/bio/:bio_id/update', {bioId: bios.id})}><img src="https://www.shareicon.net/data/512x512/2015/12/19/689669_arrows_512x512.png" alt=""></img></button>
-          <br />
-            <button className="delete-button" onClick={() => handleDelete(bios.id)}><img src="https://pngimage.net/wp-content/uploads/2018/05/delete-symbol-png-8.png" alt=""></img></ button>
+            <button 
+              className="update-button" 
+              onClick={()=> props.history.push('/dashboard/bio/:bio_id/update', 
+                {bioId: bios.id, gender: bios.gender, interest: bios.gender_preference}, 
+                )}>
+                <img src="https://www.shareicon.net/data/512x512/2015/12/19/689669_arrows_512x512.png" alt=""></img>
+            </button>
           </div>
           ) : (
             <div></div>

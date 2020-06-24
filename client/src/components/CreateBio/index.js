@@ -2,7 +2,6 @@ import React from 'react';
 import './CreateBio.css';
 import { Redirect } from 'react-router-dom';
 import { createBio } from '../../services/apiService'
-import { type } from 'os';
 
 class CreateBio extends React.Component {
     constructor(props) {
@@ -26,7 +25,6 @@ class CreateBio extends React.Component {
     newState[name] = value
     this.setState(newState)
     type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
-    console.log(currentElement.value)
   }
 
   handleSubmit = async (e) => {

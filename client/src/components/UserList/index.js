@@ -6,9 +6,6 @@ import {
     getFemaleUsers 
 } from '../../services/apiService';
 import './UserList.css';
-import { use } from 'passport';
-import { type } from 'os';
-
 
 class UserList extends React.Component {
     constructor(props) {
@@ -94,10 +91,9 @@ class UserList extends React.Component {
     renderAll = () => {
         if (this.state.data) {
             return this.state.data.map(user => {
-                const image = typeof (user.bio) === null ? "No Image" : user.bio
                 return (
                     <div key={user.id}>
-                        <img className="users-image" src={image} alt="no img" />
+                        <img className="users-image" src={user.bio.image} alt="no img" />
                         <h2 key={user.id}><Link className="peoples-list" to={{
                             pathname: `/dashboard/bio/${user.id}`,
                             state: {
