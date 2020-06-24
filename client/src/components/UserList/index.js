@@ -7,6 +7,7 @@ import {
 } from '../../services/apiService';
 import './UserList.css';
 import { use } from 'passport';
+import { type } from 'os';
 
 
 class UserList extends React.Component {
@@ -39,6 +40,21 @@ class UserList extends React.Component {
         this.setState({females})
     }
     
+    renderUserProfile = () => {
+        const userId = localStorage.getItem('userId')
+        return this.state.data.filter(user => user.id == userId)
+            .map(username => {
+                return (
+                    <div key={username.id}><Link className="button" to={{
+                        pathname: `/dashboard/bio/${username.id}`,
+                        state: { 
+                            bios: username.bio, 
+                            name: username.name
+                        }
+                    }}>{username.name}</Link></div>
+                )
+            })
+    }
     renderMale = () => {
         if(this.state.males) {
             return this.state.males.map(male => {
@@ -98,17 +114,12 @@ class UserList extends React.Component {
     render() {
         const name = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].name
         const genderInterest = (this.props.user[0]) == null ? "loading..." : this.props.user[0].bio.gender_preference
-        // const createProfle = (this.props.user[0]) === null ? "loading..." : this.props.user[0].bio
         return (
             <div className="dashboard">
                 <h1>{`Whats up, ${name}`}</h1>
                 <h1>Welcome to Tinder Friendly</h1>
                 <h3>Find out whos near you</h3>
-                {typeof createProfle === 'undefined' ?            
-                <div className='button'>
-                    <Link className="create-bio-button" to='/dashboard/create'>Create Your Profile</Link>
-                </div> : ""
-                }
+                <div>{this.renderUserProfile()}</div>
                 { 
                 (genderInterest == 'men') ? 
                 <div className="people-list">{this.renderMale()}</div> :
