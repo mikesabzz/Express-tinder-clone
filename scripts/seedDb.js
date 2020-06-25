@@ -40,7 +40,7 @@ const seedDb = async () => {
         location: "Los Angelos"
     })
     const bio2 = await Bio.create({
-        image: "https://timedotcom.files.wordpress.com/2014/10/455886166.jpg",
+        image: "https://media.vanityfair.com/photos/5e500c6c9f4dd300088c1557/1:1/w_1211,h_1212,c_limit/leonardo-dicaprio-jan-1998-annie-leibovitz.jpg",
         bio: "Nominated for alot of awards, including Best American Actor",
         gender: "male",
         gender_preference: "women",

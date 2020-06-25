@@ -23,7 +23,6 @@ class UserList extends React.Component {
         await this.getMale()
         await this.getFemale()
     }
-
     getDemo = async () => {
         const data = await getDemoUser()
         this.setState({data})
@@ -106,10 +105,9 @@ class UserList extends React.Component {
             })
         }
     }
-
     render() {
-        const name = typeof (this.props.user[0]) === 'undefined' ? "loading..." : this.props.user[0].name
-        const genderInterest = (this.props.user[0]) == null ? "loading..." : this.props.user[0].bio.gender_preference
+        const name = typeof (this.props.user[0]) === 'undefined' ? '' : this.props.user[0].name
+        const genderInterest = typeof (this.props.user[0]) === 'undefined' ? '' : this.props.user[0].bio.gender_preference
         return (
             <div className="dashboard">
                 <h1>{`Whats up, ${name}`}</h1>

@@ -8,7 +8,7 @@ require('dotenv').config()
 
 const authRouter = require('./router/authRouter')
 const appRouter = require('./router/appRouter')
-// const { authorized} = require('./auth/auth')
+const { authorized } = require('./auth/auth')
 const passport = require('passport')
 
 
@@ -32,7 +32,7 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, './client/build')));
 
 app.use('/auth', authRouter)
-app.use('/app',  /*authorized,*/ appRouter) // to reactive security
+app.use('/app', appRouter) // to reactive security
 
 app.get('/', async (request, response) => {
   try {
@@ -51,7 +51,8 @@ if (process.env.NODE_ENV == "production") {
 
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: err.message})
+  res.status(err.status || 500)
+  res.json({ message: err.message})
 })
 
 
