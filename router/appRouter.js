@@ -1,9 +1,44 @@
 const express = require  ('express')
 const appRouter = express.Router()
 const { passport } = require('../auth/auth')
-
 const { Bio, User } = require('../models');
+const cloudinary = require('../cloudinary')
+const multer = require('multer')
 
+//upload image
+// const storage = multer.diskStorage({
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + '=' + file.originalname)
+//   }
+// })
+// const upload = multer({ storage: storage })
+// appRouter.get('/bio', async(req,res) => {
+//   try {
+//     await Bio.findAll()
+//     .then((result) => res.json(result))
+//   } catch(error) {
+//     console.log(error)
+//   }
+// })
+// appRouter.post('/upload', upload.single('file'), async (req, res) => {
+//   const result = await cloudinary.uploads(req.file.path)
+//   try {
+//     await Bio.create({
+//       image: result.url,
+//       userId: req.body.userId,
+//       bio: req.body.bio,
+//       gender: req.body.gender,
+//       gender_preference: req.body.gender_preference,
+//       location: req.body.location,
+//     })
+//     .then(r => {
+//       res.send(r.get({ plain: true }))
+//     })
+//   }
+//   catch (error) {
+//     console.log(error)
+//   }
+// })
 
 appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
   async(req, res) => {
@@ -27,7 +62,6 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
   
   appRouter.get('/bio', async (req, res) => {
     res.send( await Bio.findAll())
-  
   })
   
   appRouter.get('/bio/:id', async (req, res) => {
