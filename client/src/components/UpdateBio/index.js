@@ -9,8 +9,8 @@ class UpdateBio extends React.Component {
         this.props = props
         this.state = {
             updated: false,
-            gender: '',
-            gender_preference: ''
+            gender: this.props.location.state.gender,
+            gender_preference: this.props.location.state.gender_preference
         }
     }
 
@@ -43,11 +43,12 @@ class UpdateBio extends React.Component {
                     <label htmlFor="bio">Description:</label>
                     <textarea name="bio" type="text" />
                     <br />
-                    <span>
+                    <span aria-required>
                 
                 Gender:
                 <label htmlFor="gender">male
                   <input
+                  
                     type="radio"
                     name="gender"
                     value="male"
@@ -67,7 +68,7 @@ class UpdateBio extends React.Component {
               </span>
                             
 
-              <span>
+              <span aria-required>
                 Gender Interest:
                 <label htmlFor="gender_preference">men
                   <input
