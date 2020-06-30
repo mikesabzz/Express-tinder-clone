@@ -106,20 +106,26 @@ class UserList extends React.Component {
         }
     }
     render() {
-        const name = typeof (this.props.user[0]) === 'undefined' ? '' : this.props.user[0].name
-        const genderInterest = typeof (this.props.user[0]) === 'undefined' ? '' : this.props.user[0].bio.gender_preference
+        let name
+        let interest
+        try {
+            name = this.props.user[0].name
+            interest = this.props.user[0].bio.gender_preference
+        } catch (e) {
+            console.log(e)
+        }
         return (
             <div className="dashboard">
                 <h1>{`Whats up, ${name}`}</h1>
                 <h1>Welcome to Tinder Friendly</h1>
                 <h3>Find out whos near you</h3>
                 <div>{this.renderUserProfile()}</div>
-                { 
-                (genderInterest == 'men') ? 
-                <div className="people-list">{this.renderMale()}</div> :
-                (genderInterest == 'women') ?
-                <div className="people-list">{this.renderFemale()}</div> :
-                <div className="people-list">{this.renderAll()}</div>
+                {
+                    (interest == 'men') ?
+                        <div className="people-list">{this.renderMale()}</div> :
+                        (interest == 'women') ?
+                            <div className="people-list">{this.renderFemale()}</div> :
+                            <div className="people-list">{this.renderAll()}</div>
                 }
             </div>
         )
