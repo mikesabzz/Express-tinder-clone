@@ -13,15 +13,19 @@ class UserList extends React.Component {
         this.state = {
             data:[],
             bios:{},
+            currentUser: {},
             males:[],
             females:[]
         }
     }
-
     async componentDidMount () {
         await this.getDemo() 
         await this.getMale()
         await this.getFemale()
+        await this.fetchCurrentUser()
+    }
+    fetchCurrentUser = async () => {
+        await this.setState({currentUser: this.props.user[0]})
     }
     getDemo = async () => {
         const data = await getDemoUser()
@@ -51,56 +55,57 @@ class UserList extends React.Component {
             })
     }
     renderUsers = () => {
-        const genderInterest = this.props.user[0]
-        console.log(this.props.user)
         try {
-            if (genderInterest.bio.gender_preference == 'men') {
-                return this.state.males.map(male => {
-                    return (
-                        <div key={male.id}>
-                            <img className="users-image" src={male.bio.image} alt="no img" />
-                            <h2 key={male.id}><Link className="peoples-list" to={{
-                                pathname: `/dashboard/bio/${male.id}`,
-                                state: {
-                                    bios: male.bio,
-                                    name: male.name
-                                }
-                            }}>{male.name}</Link></h2>
-                        </div>
-                    )
-                })
-            } 
-            else if (genderInterest.bio.gender_preference == 'women') {
-                return this.state.females.map(female => {
-                    return (
-                        <div key={female.id}>
-                            <img className="users-image" src={female.bio.image} alt="no img" />
-                            <h2 key={female.id}><Link className="peoples-list" to={{
-                                pathname: `/dashboard/bio/${female.id}`,
-                                state: {
-                                    bios: female.bio,
-                                    name: female.name
-                                }
-                            }}>{female.name}</Link></h2>
-                        </div>
-                    )
-                })
-            } else {
-                return this.state.data.map(user => {
-                    return (
-                        <div key={user.id}>
-                            <img className="users-image" src={user.bio.image} alt="no img" />
-                            <h2 key={user.id}><Link className="peoples-list" to={{
-                                pathname: `/dashboard/bio/${user.id}`,
-                                state: {
-                                    bios: user.bio,
-                                    name: user.name
-                                }
-                            }}>{user.name}</Link></h2>
-                        </div>
-                    )
-                })
-    
+            const interest = this.state.currentUser
+            if (interest) {
+                if (interest.bio.gender_preference == 'men') {
+                    return this.state.males.map(male => {
+                        return (
+                            <div key={male.id}>
+                                <img className="users-image" src={male.bio.image} alt="no img" />
+                                <h2 key={male.id}><Link className="peoples-list" to={{
+                                    pathname: `/dashboard/bio/${male.id}`,
+                                    state: {
+                                        bios: male.bio,
+                                        name: male.name
+                                    }
+                                }}>{male.name}</Link></h2>
+                            </div>
+                        )
+                    })
+                }
+                else if (interest.bio.gender_preference == 'women') {
+                    return this.state.females.map(female => {
+                        return (
+                            <div key={female.id}>
+                                <img className="users-image" src={female.bio.image} alt="no img" />
+                                <h2 key={female.id}><Link className="peoples-list" to={{
+                                    pathname: `/dashboard/bio/${female.id}`,
+                                    state: {
+                                        bios: female.bio,
+                                        name: female.name
+                                    }
+                                }}>{female.name}</Link></h2>
+                            </div>
+                        )
+                    })
+                } else {
+                    return this.state.data.map(user => {
+                        return (
+                            <div key={user.id}>
+                                <img className="users-image" src={user.bio.image} alt="no img" />
+                                <h2 key={user.id}><Link className="peoples-list" to={{
+                                    pathname: `/dashboard/bio/${user.id}`,
+                                    state: {
+                                        bios: user.bio,
+                                        name: user.name
+                                    }
+                                }}>{user.name}</Link></h2>
+                            </div>
+                        )
+                    })
+
+                }
             }
         } catch (e) {
             console.error(e)
