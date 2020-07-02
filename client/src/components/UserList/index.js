@@ -35,7 +35,6 @@ class UserList extends React.Component {
         const females = await getFemaleUsers()
         this.setState({females})
     }
-    
     renderUserProfile = () => {
         const userId = localStorage.getItem('userId')
         return this.state.data.filter(user => user.id == userId)
@@ -51,82 +50,69 @@ class UserList extends React.Component {
                 )
             })
     }
-    renderMale = () => {
-        if(this.state.males) {
-            return this.state.males.map(male => {
-                return (
-                    <div key={male.id}>
-                        <img className="users-image" src={male.bio.image} alt="no img" />
-                        <h2 key={male.id}><Link className="peoples-list" to={{
-                            pathname: `/dashboard/bio/${male.id}`,
-                            state: { 
-                                bios: male.bio, 
-                                name: male.name
-                            }
-                        }}>{male.name}</Link></h2>
-                    </div>
-                )
-            })
-        }
-    }
-    renderFemale = () => {
-        if(this.state.females) {
-            return this.state.females.map(female => {
-                return (
-                    <div key={female.id}>
-                        <img className="users-image" src={female.bio.image} alt="no img" />
-                        <h2 key={female.id}><Link className="peoples-list" to={{
-                            pathname: `/dashboard/bio/${female.id}`,
-                            state: {
-                                bios: female.bio,
-                                name: female.name
-                            }
-                        }}>{female.name}</Link></h2>
-                    </div>
-                )
-            })
-        }
-    }
-    renderAll = () => {
-        if (this.state.data) {
-            return this.state.data.map(user => {
-                return (
-                    <div key={user.id}>
-                        <img className="users-image" src={user.bio.image} alt="no img" />
-                        <h2 key={user.id}><Link className="peoples-list" to={{
-                            pathname: `/dashboard/bio/${user.id}`,
-                            state: {
-                                bios: user.bio,
-                                name: user.name
-                            }
-                        }}>{user.name}</Link></h2>
-                    </div>
-                )
-            })
+    renderUsers = () => {
+        const genderInterest = this.props.user[0]
+        console.log(this.props.user)
+        try {
+            if (genderInterest.bio.gender_preference == 'men') {
+                return this.state.males.map(male => {
+                    return (
+                        <div key={male.id}>
+                            <img className="users-image" src={male.bio.image} alt="no img" />
+                            <h2 key={male.id}><Link className="peoples-list" to={{
+                                pathname: `/dashboard/bio/${male.id}`,
+                                state: {
+                                    bios: male.bio,
+                                    name: male.name
+                                }
+                            }}>{male.name}</Link></h2>
+                        </div>
+                    )
+                })
+            } 
+            else if (genderInterest.bio.gender_preference == 'women') {
+                return this.state.females.map(female => {
+                    return (
+                        <div key={female.id}>
+                            <img className="users-image" src={female.bio.image} alt="no img" />
+                            <h2 key={female.id}><Link className="peoples-list" to={{
+                                pathname: `/dashboard/bio/${female.id}`,
+                                state: {
+                                    bios: female.bio,
+                                    name: female.name
+                                }
+                            }}>{female.name}</Link></h2>
+                        </div>
+                    )
+                })
+            } else {
+                return this.state.data.map(user => {
+                    return (
+                        <div key={user.id}>
+                            <img className="users-image" src={user.bio.image} alt="no img" />
+                            <h2 key={user.id}><Link className="peoples-list" to={{
+                                pathname: `/dashboard/bio/${user.id}`,
+                                state: {
+                                    bios: user.bio,
+                                    name: user.name
+                                }
+                            }}>{user.name}</Link></h2>
+                        </div>
+                    )
+                })
+    
+            }
+        } catch (e) {
+            console.error(e)
         }
     }
     render() {
-        let name
-        let interest
-        try {
-            name = this.props.user[0].name
-            interest = this.props.user[0].bio.gender_preference
-        } catch (e) {
-            console.log(e)
-        }
         return (
             <div className="dashboard">
-                <h1>{`Whats up, ${name}`}</h1>
                 <h1>Welcome to Tinder Friendly</h1>
                 <h3>Find out whos near you</h3>
                 <div>{this.renderUserProfile()}</div>
-                {
-                    (interest == 'men') ?
-                        <div className="people-list">{this.renderMale()}</div> :
-                        (interest == 'women') ?
-                            <div className="people-list">{this.renderFemale()}</div> :
-                            <div className="people-list">{this.renderAll()}</div>
-                }
+                <div className="people-list">{this.renderUsers()}</div>
             </div>
         )
     }
