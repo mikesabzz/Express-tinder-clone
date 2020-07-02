@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
+    getProfile,
     getDemoUser, 
     getMaleUsers, 
     getFemaleUsers 
@@ -13,7 +14,7 @@ class UserList extends React.Component {
         this.state = {
             data:[],
             bios:{},
-            currentUser: {},
+            currentUser:[],
             males:[],
             females:[]
         }
@@ -25,7 +26,8 @@ class UserList extends React.Component {
         await this.fetchCurrentUser()
     }
     fetchCurrentUser = async () => {
-        await this.setState({currentUser: this.props.user[0]})
+        const currentUser = await getProfile()
+        this.setState({currentUser})
     }
     getDemo = async () => {
         const data = await getDemoUser()
@@ -55,9 +57,9 @@ class UserList extends React.Component {
             })
     }
     renderUsers = () => {
-        try {
-            const interest = this.state.currentUser
-            if (interest) {
+        const genderInterest = this.state.currentUser
+        if (genderInterest){
+            return genderInterest.map(interest => {
                 if (interest.bio.gender_preference == 'men') {
                     return this.state.males.map(male => {
                         return (
@@ -73,7 +75,7 @@ class UserList extends React.Component {
                             </div>
                         )
                     })
-                }
+                } 
                 else if (interest.bio.gender_preference == 'women') {
                     return this.state.females.map(female => {
                         return (
@@ -106,9 +108,7 @@ class UserList extends React.Component {
                     })
 
                 }
-            }
-        } catch (e) {
-            console.error(e)
+            })
         }
     }
     render() {
