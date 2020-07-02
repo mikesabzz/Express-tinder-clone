@@ -1,7 +1,7 @@
 # Express-tinder-clone-app
 ## Tinder Friendly
 
-http://express-tinder-clone-app.surge.sh/
+## [Demo Link](http://express-tinder-clone-app.surge.sh/)
 
 ### Description
 * A full-stack CRUD app with login and sign up functionality using React and Node.js that allows you to create, update and delete your profile.
