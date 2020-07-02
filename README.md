@@ -18,7 +18,7 @@
 
 ![](https://imgur.com/lxjaSGi.png)
 
-![](https://imgur.com/msDunON.png)
+![](https://imgur.com/fnyK0We.png)
 
 ### To run the app:
 * Git clone
