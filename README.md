@@ -10,7 +10,7 @@ http://express-tinder-clone-app.surge.sh/
 ##### You should:
 1. Become a user and talk about yourself. 
 2. See whos around you.
-3. Create, Read, Update and Delete your own bio.
+3. Create your own bio (or update your bio).
 
 
 ##### Software Used:
@@ -22,6 +22,5 @@ http://express-tinder-clone-app.surge.sh/
 
 ### To run the app:
 * Git clone
-* npm run start
-* cd client
-* npm run start
+* npm run dev
+
