@@ -15,7 +15,6 @@ export const login = async (data) => {
     try {
         const response = await apiClient.post('/auth/login', data)
         const { token, user } = response.data
-
         localStorage.setItem('token', token)
         localStorage.setItem('userId', user.id)
         console.log(user)

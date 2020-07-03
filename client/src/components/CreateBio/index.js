@@ -93,6 +93,16 @@ class CreateBio extends React.Component {
                 onChange={this.handleChange}
               />
             </label>
+            <label htmlFor="gender_preference">either
+                  <input
+                id="gender-checkbox"
+                type="radio"
+                name="gender_preference"
+                value="either"
+                checked={this.state.gender_preference === "either"}
+                onChange={this.handleChange}
+              />
+            </label>
           </span>
           <br />
           <label htmlFor="location">Location:</label>
