@@ -4,12 +4,11 @@ const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
 const JWT_TOKEN = localStorage.getItem('token')
 
 const apiClient = axios.create({
-    baseURL: BASE_URL,
-    headers: {
-        'Authorization': `Bearer ${JWT_TOKEN}`
-    
-    }
+    baseURL: BASE_URL
 })
+
+    apiClient.defaults.headers.common['Authorization'] = `Bearer ${JWT_TOKEN}`
+
 
 export const login = async (data) => {
     try {
@@ -17,7 +16,8 @@ export const login = async (data) => {
         const { token, user } = response.data
         localStorage.setItem('token', token)
         localStorage.setItem('userId', user.id)
-        console.log(user)
+        apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
         return user
 
     } catch(e) {
@@ -29,10 +29,47 @@ export const signUp = async (data) => {
     try {
         const response = await apiClient.post('/auth/signup', data)
         const { token, user } = response.data
-
         localStorage.setItem('token', token)
+        localStorage.setItem('userId', user.id)
+        apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
         return user
 
+    } catch(e) {
+        throw e
+    }
+}
+
+export const getProfile = async () => {
+    try {
+        const response = await apiClient.get('/app/profile')
+        const { data: { user } } = response
+        return user
+
+    } catch(e) {
+        throw e
+    }
+}
+
+export const getDemoUser = async () => {
+    try {
+        const response = await apiClient.get('/app/bio/users/demos')
+        return response.data
+    } catch(e) {
+        throw e
+    }
+}
+export const getMaleUsers = async ()=> {
+    try {
+        const response = await apiClient.get('/app/bio/gender/male')
+        return response.data
+    } catch(e) {
+        throw e
+    }
+}
+export const getFemaleUsers = async ()=> {
+    try {
+        const response = await apiClient.get('/app/bio/gender/female')
+        return response.data
     } catch(e) {
         throw e
     }
@@ -81,39 +118,7 @@ export const deleteBio = async (bioId, data) => {
     }
 }
 
-export const getProfile = async () => {
-    try {
-        const response = await apiClient.get('/app/profile')
-        const {user} = response.data
-        return user
 
-    } catch(e) {
-        throw e
-    }
-}
 
-export const getDemoUser = async ()=> {
-    try {
-        const response = await apiClient.get('/app/bio/users/demos')
-        return response.data
-    } catch(e) {
-        throw e
-    }
-}
-export const getMaleUsers = async ()=> {
-    try {
-        const response = await apiClient.get('/app/bio/gender/male')
-        return response.data
-    } catch(e) {
-        throw e
-    }
-}
-export const getFemaleUsers = async ()=> {
-    try {
-        const response = await apiClient.get('/app/bio/gender/female')
-        return response.data
-    } catch(e) {
-        throw e
-    }
-}
+
 

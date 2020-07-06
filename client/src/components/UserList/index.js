@@ -91,7 +91,7 @@ class UserList extends React.Component {
                             </div>
                         )
                     })
-                } else {
+                } else{
                     return this.state.data.map(user => {
                         return (
                             <div key={user.id}>

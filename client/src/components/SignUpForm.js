@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { createSign } from 'crypto';
 import { Redirect } from 'react-router'
 import './Signup.css'
 
@@ -12,6 +11,8 @@ class SignUpForm extends Component {
             password: '',
             showError: false
         }
+        this.handleSubmitForm = this.handleSubmitForm.bind(this)
+        this.handleTextInput = this.handleTextInput.bind(this)
     }
 
     handleSubmitForm = async (e) => {
@@ -25,9 +26,7 @@ class SignUpForm extends Component {
         try {
             await handleSignUp({name, email, password})
         } catch(e) {
-            this.setState(state => {
-                return { showError : true}
-            })
+            this.setState({ showError : true })
         }
     }
 
@@ -39,7 +38,7 @@ class SignUpForm extends Component {
     }
 
     render() {
-        const { isSignedIn} = this.props
+        const { isSignedIn } = this.props
         if (isSignedIn) {
             return <Redirect to="/dashboard/create" />
         }

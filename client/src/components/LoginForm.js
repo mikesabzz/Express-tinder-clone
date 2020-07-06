@@ -1,5 +1,5 @@
 import React from 'react'
-import {Redirect} from 'react-router'
+import {Redirect} from 'react-router-dom'
 import './Login.css'
 
 class LoginForm extends React.Component {
@@ -11,6 +11,8 @@ class LoginForm extends React.Component {
             password: "",
             showError: false
         }
+        this.handleSubmitForm = this.handleSubmitForm.bind(this)
+        this.handleTextInput = this.handleTextInput.bind(this)
     }
 
 handleSubmitForm = async (event) => {

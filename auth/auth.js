@@ -1,13 +1,11 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const { User } = require('../models/index.js')
-const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
+const bcrypt = require('bcrypt')
 const JWTStrategy = require('passport-jwt').Strategy
 const ExtractJWT = require('passport-jwt').ExtractJwt
-
-
+require('dotenv').config()
 
 const jwtSign = (payload) =>{
     return jwt.sign(payload, process.env.SECRET)
@@ -38,7 +36,7 @@ passport.use('login', new LocalStrategy({
 }, async (email, password, done) => {
   try {
     const user = await User.findOne({ where: { email: email }})
-    console.log(user)
+    console.log(user.email)
     console.log(`*** user: ${user} ***`)
 
     if (!user) {
@@ -66,7 +64,6 @@ passport.use('signup', new LocalStrategy({
     passReqToCallback: true
 }, async (req, email, password, done) => {
     try {
-        console.log(req)
         const { body: { name } } = req
 
         const user = await User.create({
@@ -74,11 +71,10 @@ passport.use('signup', new LocalStrategy({
             email: email,
             password: password
         })
-
         if(!user) {
             return done(null, false, {message: 'User not a user'})
         }
-        done(null, user, {message: 'User suucessfuly created'})
+        done(null, user, {message: 'User successfuly created'})
 
     } catch(e) {
         done(e)
@@ -89,7 +85,7 @@ passport.use('signup', new LocalStrategy({
 const authorized = (request, response, next) => {
     passport.authenticate('jwt', { session: false }, async (error, user) => {
       if (error || !user) {
-        let err = new Error('No sccess allowed')
+        let err = new Error('No access allowed')
         err.status = 401
         return next(err)
       }
@@ -100,6 +96,8 @@ const authorized = (request, response, next) => {
   }
 
 module.exports = {
-  passport, jwtSign, authorized
+  passport,
+  jwtSign,
+  authorized
 }
 

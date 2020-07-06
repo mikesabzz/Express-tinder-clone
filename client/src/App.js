@@ -19,8 +19,8 @@ class App extends React.Component {
 
   async componentDidMount() {
     try{
-      const fetchUser = await getProfile()
-
+      
+      const fetchUser = authService.isAuthenticated() ? await getProfile() : {}
       this.setState(state => {
         return {
           isSignedIn: authService.isAuthenticated(),
