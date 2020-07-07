@@ -9,7 +9,8 @@ class LoginForm extends React.Component {
         this.state= {
             email: "",
             password: "",
-            showError: false
+            showError: false,
+            loading: false
         }
         this.handleSubmitForm = this.handleSubmitForm.bind(this)
         this.handleTextInput = this.handleTextInput.bind(this)
@@ -20,6 +21,7 @@ handleSubmitForm = async (event) => {
     const { email, password } = this.state
     const { handleLogin } = this.props
 
+    this.setState({ loading: true })
     try {
         await handleLogin({ email, password})
     } catch(e) {
@@ -38,14 +40,22 @@ handleTextInput = (event) => {
 }
     render() {
         const { isSignedIn} = this.props
-        const { showError } = this.state
+        const { showError, loading } = this.state
 
         let errorMessage
+        let loadingMessage
 
         if(showError) {
             errorMessage = (
                 <div className="errorMessage">
                     <span>An error occured, please try again</span>
+                </div>
+            )
+        } 
+        if (loading) {
+            loadingMessage = (
+            <div className="loadingMessage">
+                    <span></span>
                 </div>
             )
         }
@@ -55,7 +65,8 @@ handleTextInput = (event) => {
         return( 
             <div className="login-form">
                 <h1>Login</h1>
-                { errorMessage}
+                { errorMessage }
+                { loadingMessage }
                 <form className="form" onSubmit={this.handleSubmitForm}>
                     <div>
                         <label>Email</label>
