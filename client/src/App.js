@@ -103,6 +103,7 @@ signUpUser = async (credentials) => {
         <div>
         {!isSignedIn ? (
             <div>
+              <h2 style={{ textAlign: "center", padding: "20px", background: "#ffcccc" }}>The application is currently undergoing maintenance</h2>
               <h1 className="title">Friendly Tinder</h1>
               <br></br>
               <h2 className="greeting">Meet New Friends Near You</h2>
