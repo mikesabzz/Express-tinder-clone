@@ -30,7 +30,7 @@ const renderBios = () => {
             <button 
               className="update-button" 
               onClick={()=> props.history.push('/dashboard/bio/:bio_id/update', 
-                {bioId: bios.id, gender: bios.gender, interest: bios.gender_preference}, 
+                {bioId: bios.id, image: bios.image, bio: bios.bio, gender: bios.gender, interest: bios.gender_preference, location: bios.location}, 
                 )}>
                 <img src="https://www.shareicon.net/data/512x512/2015/12/19/689669_arrows_512x512.png" alt=""></img>
             </button>

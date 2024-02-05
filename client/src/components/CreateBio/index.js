@@ -1,46 +1,62 @@
-import React from 'react';
-import './CreateBio.css';
-import { Redirect } from 'react-router-dom';
-import { createBio } from '../../services/apiService'
+import React from "react";
+import "./CreateBio.css";
+import { Redirect } from "react-router-dom";
+import { createBio } from "../../services/apiService";
 
 class CreateBio extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.props = props
+    this.props = props;
     this.state = {
       created: false,
-      name: '',
+      name: "",
       userId: props.user.id,
-      gender: '',
-      gender_preference: ''
-    }
+      gender: "",
+      gender_preference: "",
+    };
   }
-
 
   handleChange = (e) => {
-    const currentElement = e.target
-    const { name, value, type, checked } = currentElement
+    const currentElement = e.target;
+    const { name, value, type, checked } = currentElement;
     const newState = {};
-    newState[name] = value
-    this.setState(newState)
-    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
-  }
+    newState[name] = value;
+    this.setState(newState);
+    type === "checkbox"
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
+  };
 
   handleSubmit = async (e) => {
-    e.preventDefault()
-    const { userId, name, image, bio, gender, gender_preference, location } = this.state
-    const bios = { userId, name, image, bio, gender, gender_preference, location };
+    e.preventDefault();
+    const { userId, name, image, bio, gender, gender_preference, location } =
+      this.state;
+    const bios = {
+      userId,
+      name,
+      image,
+      bio,
+      gender,
+      gender_preference,
+      location,
+    };
     await createBio(bios);
-    this.setState({ created: true })
-  }
+    this.setState({ created: true });
+  };
 
   render() {
-    if (this.state.created) { return <Redirect to="/dashboard"></Redirect> }
+    if (this.state.created) {
+      return <Redirect to="/dashboard"></Redirect>;
+    }
     return (
       <div className="profile-create">
         <h1>Create Your Profile:</h1>
-        <form onChange={this.handleChange} value={this.state.selectedValue} onSubmit={this.handleSubmit}>
+        <form
+          onChange={this.handleChange}
+          value={this.state.selectedValue}
+          onSubmit={this.handleSubmit}
+        >
           <label htmlFor="image">Image URL (.png/.jpg):</label>
           <input name="image" type="text" />
           <br />
@@ -48,70 +64,70 @@ class CreateBio extends React.Component {
           <br />
           <textarea name="bio" type="text" />
           <br />
+          <div className="radio-row">
+            <span>
+              <b>Gender</b>
+              <label htmlFor="gender-male">male</label>
+                <input
+                  id="gender-male"
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={this.state.gender === "male"}
+                  onChange={this.handleChange}
+                />
+              <label htmlFor="gender-female">female</label>
+                <input
+                  id="gender-female"
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={this.state.gender === "female"}
+                  onChange={this.handleChange}
+                />
+            </span>
+          </div>
+          <div className="radio-row">
           <span>
-            Gender:
-                <label htmlFor="gender">male
-                  <input
-                id="gender-checkbox"
-                type="radio"
-                name="gender"
-                value="male"
-                checked={this.state.gender === "male"}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label htmlFor="gender">female
-                  <input
-                id="gender-checkbox"
-                type="radio"
-                name="gender"
-                value="female"
-                checked={this.state.gender === "female"}
-                onChange={this.handleChange}
-              />
-            </label>
-          </span>
-          <span>
-            Gender Interest:
-                <label htmlFor="gender_preference">men
-                  <input
-                id="gender-checkbox"
+            <b>Gender Interest</b>
+             <label htmlFor="interest-men">men</label>
+              <input
+                id="interest-men"
                 type="radio"
                 name="gender_preference"
                 value="men"
                 checked={this.state.gender_preference === "men"}
                 onChange={this.handleChange}
               />
-            </label>
-            <label htmlFor="gender_preference">women
-                  <input
-                id="gender-checkbox"
+            <label htmlFor="interest-women">women</label>
+              <input
+                id="interest-women"
                 type="radio"
                 name="gender_preference"
                 value="women"
                 checked={this.state.gender_preference === "women"}
                 onChange={this.handleChange}
               />
-            </label>
-            <label htmlFor="gender_preference">either
-                  <input
-                id="gender-checkbox"
+            <label htmlFor="interest-either">either</label>
+              <input
+                id="interest-either"
                 type="radio"
                 name="gender_preference"
                 value="either"
                 checked={this.state.gender_preference === "either"}
                 onChange={this.handleChange}
               />
-            </label>
           </span>
-          <br />
+          </div>
           <label htmlFor="location">Location:</label>
           <input name="location" type="text" />
-          <div className="submit"><input type="submit" /></div>
+          <div className="submit">
+            <input type="submit" />
+          </div>
         </form>
       </div>
     );
-  };
+  }
 }
 
-export default CreateBio
+export default CreateBio;

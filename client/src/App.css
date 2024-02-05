@@ -3,7 +3,21 @@
 .App {
   text-align: center;
 }
-.signup-button{
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #6FC7F0;
+}
+
+nav div {
+  margin: 10px;
+}
+.login-button,
+.signup-button,
+.dashboard-button, 
+.signoff-button {
   display: flex;
   width: 13vh;
   height: 5vh;
@@ -14,31 +28,27 @@
   font-family: 'Righteous', cursive;
   border-radius: 13px;
 }
-.signup-button:hover{
-  background-color: peru;
-}
-.login-button {
-  display: flex;
-  width: 13vh;
-  height: 5vh;
-  margin: 20px;
+.signoff-button button {
   background-color: orange;
-  padding-top: 12px;
-  justify-content: center;
-  font-family: 'Righteous', cursive;
+  border: none;
+  padding: 10px;
+  font-size: 16px; /* Adjust font size for better mobile responsiveness */
   border-radius: 13px;
+  font-family: 'Righteous', cursive;
+  cursor: pointer;
 }
-.login-button:hover {
+.signoff-button button:hover {
   background-color: peru;
 }
+.signup-button:hover,
+.login-button:hover{
+  background-color: peru;
+}
+
 .title {
-  display: flex;
-  justify-content: center;
-  letter-spacing: 3px;
-  font-size: 6vh;
+  font-size: 6vw;
   font-family: 'Righteous', cursive;
   animation: popout 1s ease;
-  -webkit-animation: popout 1s ease;
 }
 @keyframes popout {
   from{transform:scale(0)}
@@ -51,24 +61,9 @@
   to{-webkit-transform:scale(1)}
 }
 .greeting {
-  letter-spacing: 1px;
-  font-size: 4vh;
+  font-size: 4vw;
   font-family: 'Righteous', cursive;
   animation: popout 1s ease;
-}
-.signoff-button {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 10vh 20px 70vh;
-  font-size: 25px;
-  font-weight: bold;
-}
-.dashboard-button {
-  display: flex;
-  justify-content: flex-start;
-  margin: 20px 70vh 0 10vh;
-  font-size: 20px;
-  font-weight: bold;
 }
 a:hover {
   color: rgb(52, 52, 210);

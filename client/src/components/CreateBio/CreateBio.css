@@ -2,18 +2,48 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    font-size: 24px;
+    font-size: 18px;
 }
-.profile-create input {
-    margin: 13px;
-    padding-bottom: 10px;
-    font-size: 17px;
-    width: 50vh;
+.profile-create input,
+.profile-create textarea {
+    margin: 10px 0;
+    padding-bottom: 8px;
+    font-size: 14px;
+    width: 100%;
 }
 .profile-create textarea {
-    margin: 13px;
-    padding-bottom: 10px;
-    font-size: 17px;
-    width: 50vh;
-    height: 20vh;
+    height: 15vh;
+}
+.submit input {
+    background-color: peru;
+    font-size: 20px;
+    padding-right: 2vh;
+    align-self: center;
+}
+
+.radio-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.radio-row span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.radio-row b {
+    margin: 10px;
+}
+.radio-row label {
+    margin-left: 15px;
+}
+@media (min-width: 600px) {
+    .profile-create input,
+    .profile-create textarea {
+        width: 50%;
+    }
 }

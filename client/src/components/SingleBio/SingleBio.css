@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Cute+Font&display=swap');
 .single-bio img{
-    width: 50vh;
+    width: 100%;
+    max-width: 50vh;
     height: auto;
     border: inset white 8px;
 }
@@ -15,5 +16,15 @@
 .delete-button img{
     width: 6vh;
     height: auto;
-
 }
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    .single-bio {
+      font-size: 24px; /* Adjust font size for smaller screens */
+    }
+  
+    .update-button img,
+    .delete-button img {
+      width: 3vh; /* Adjust image size for smaller screens */
+    }
+  }

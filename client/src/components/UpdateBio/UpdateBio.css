@@ -1,27 +1,59 @@
-.update-profile label{
+.update-profile label {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    font-size: 24px;
-}
-.update-profile input {
-    margin: 13px;
-    padding-bottom: 10px;
-    font-size: 17px;
-    width: 50vh;
-}
-.update-profile textarea {
-    margin: 13px;
-    font-size: 17px;
-    width: 50vh;
-    height: 20vh;
-}
-.submit input{
+    font-size: 18px;
+  }
+  
+  .update-profile input,
+  .update-profile textarea {
+    margin: 10px 0;
+    padding-bottom: 8px;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .update-profile textarea {
+    height: 15vh;
+  }
+  
+  .submit input {
     background-color: peru;
     font-size: 20px;
     padding-right: 2vh;
     align-self: center;
-}
-#gender-checkbox {
+  }
+  
+  #gender-checkbox {
     margin: auto;
-}
+  }
+  
+  .radio-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .radio-row span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .radio-row b {
+    margin: 10px; 
+  }
+  .radio-row label {
+    margin-left: 15px;
+  }
+  
+
+  
+  /* Media query for desktop devices */
+  @media (min-width: 600px) {
+    .update-profile input,
+    .update-profile textarea {
+      width: 50%; /* Set a specific width for desktop devices */
+    }
+  }

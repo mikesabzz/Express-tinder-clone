@@ -9,7 +9,7 @@
     justify-content: center;
     background-color: white;
     opacity: 0.8;
-    margin: 27px 14vh 18px 14vh;
+    margin: 2vh 2vw 1vh 2vw;
     padding: 10px;
     font-family: 'Righteous', cursive;
     letter-spacing: 2px;
@@ -22,25 +22,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 10vh 20vh 18px 20vh;
-    background-color: white;
-    opacity: 0.8;
+    margin: 2vh 2vw 1vh 2vw;
+    background-color:rgba(255, 255, 255, 0.8);
     border-radius: 20px;
     box-shadow: 14px 9px 16px rgb(74, 45, 45);
 }
 .users-image{
-    width: 10pc;
+    width: 100%;
+    max-width: 10pc; 
     height: auto;
     border-radius: 35%;
+    opacity: 1;
 }
 .button {
     font-size: 23px;
     font-weight: bold;
     background-color: green;
     opacity: 0.9;
-    margin: 0 27vh 0 27vh;
+    margin: 2vh 2vw 1vh 2vw;
     padding: 12px;
     border-radius: 20vh;
+    margin-top: 6px;
 }
 a:visited{
     color: black;
@@ -53,4 +55,10 @@ a:link{
 }
 .people-list:hover {
     color: yellow;
+}
+/* Media query for small screens */
+@media (max-width: 600px) {
+    .dashboard h1, .dashboard h3, .people-list, .button {
+        margin: 2vh 2vw 1vh 2vw; /* Adjust margin for small screens */
+    }
 }
