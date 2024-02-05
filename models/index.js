@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const UserModel = require('./user')
 const BioModel = require('./bio')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const db = new Sequelize((process.env.DATABASE_URL || 'postgres://localhost:5432/bio_user'), {
   database: "bio_user",

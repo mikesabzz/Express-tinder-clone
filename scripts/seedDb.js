@@ -1,5 +1,5 @@
 const { User, Bio }  = require('../models/index')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const seedDb = async () => {
   try {
