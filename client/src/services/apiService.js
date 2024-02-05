@@ -1,13 +1,22 @@
 import axios from 'axios'
-const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
-// const BASE_URL = 'http://localhost:8001'
+// const BASE_URL = process.env.REACT_APP_HEROKU_URL || 'http://localhost:8001'
+const BASE_URL = 'http://localhost:8000'
 const JWT_TOKEN = localStorage.getItem('token')
 
 const apiClient = axios.create({
-    baseURL: BASE_URL
+    baseURL: BASE_URL,
+    headers: {
+        'Content-Type': 'application/json',
+      }
 })
 
-    apiClient.defaults.headers.common['Authorization'] = `Bearer ${JWT_TOKEN}`
+apiClient.interceptors.request.use((config) => {
+    const JWT_TOKEN = localStorage.getItem('token');
+    if (JWT_TOKEN) {
+      config.headers['Authorization'] = `Bearer ${JWT_TOKEN}`;
+    }
+    return config;
+  });
 
 
 export const login = async (data) => {
