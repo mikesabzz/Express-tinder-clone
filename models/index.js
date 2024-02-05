@@ -2,6 +2,7 @@ const Sequelize = require('sequelize')
 const UserModel = require('./user')
 const BioModel = require('./bio')
 const bcrypt = require('bcryptjs')
+const dotenv = require("dotenv")
 
 dotenv.config();
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env || {};
