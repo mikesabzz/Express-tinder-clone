@@ -1,13 +1,13 @@
-const { db } = require('../models/index')
+const { db } = require("../models/index");
 
 const resetDb = async () => {
   try {
-    await db.sync({ force: true })
+    await db.sync({ force: true });
   } catch (e) {
-    throw e
+    throw e;
   } finally {
-    process.exit()
+    process.exit();
   }
-}
+};
 
-resetDb()
+resetDb();
