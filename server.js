@@ -9,7 +9,6 @@ const { authorized } = require('./auth/auth')
 const path = require('path')
 require('dotenv').config()
 
-
 // establishing the I/O port
 const PORT = process.env.PORT || 8000
 // initializing the express app
