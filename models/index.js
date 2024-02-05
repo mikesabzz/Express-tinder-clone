@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize')
-const UserModel = require('./user')
-const BioModel = require('./bio')
-const bcrypt = require('bcryptjs')
-const dotenv = require("dotenv")
+const Sequelize = require("sequelize");
+const UserModel = require("./user");
+const BioModel = require("./bio");
+const bcrypt = require("bcryptjs");
+const dotenv = require("dotenv");
 
 dotenv.config();
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env || {};
@@ -48,20 +48,19 @@ const db = new Sequelize({
 const User = UserModel(db, Sequelize);
 
 User.beforeCreate(async (user, options) => {
-
-    const hashedPassword = await bcrypt.hash(
-        user.password,
-        Number(process.env.SALT_ROUNDS)
-    )
-    user.password = hashedPassword
+  const hashedPassword = await bcrypt.hash(
+    user.password,
+    Number(process.env.SALT_ROUNDS)
+  );
+  user.password = hashedPassword;
 });
 
-const Bio = BioModel(db,Sequelize)
-User.hasOne(Bio)
-Bio.belongsTo(User)
+const Bio = BioModel(db, Sequelize);
+User.hasOne(Bio);
+Bio.belongsTo(User);
 
 module.exports = {
   db,
   User,
-  Bio
-}
+  Bio,
+};
