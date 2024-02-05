@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use('/auth', authRouter)
-app.use('/app', appRouter) // to reactive security
+app.use('/app', authorized, appRouter) // to reactive security
 // Static hosting for built files
 
 app.get('/', async (request, response) => {
