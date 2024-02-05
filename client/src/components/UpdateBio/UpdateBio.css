@@ -50,24 +50,23 @@
   margin-top: 5px; 
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .update-profile input,
   .update-profile textarea {
     width: 100%; 
   }
   
   .radio-row span {
-    flex-direction: row; /* Change back to row layout for small screens */
+    flex-direction: row; 
   }
 
   .radio-row label {
-    margin-left: 10px; /* Adjusted for better spacing on small screens */
+    margin-left: 10px; 
   }
-}
-/* Media query for desktop devices */
+} */
 @media (min-width: 601px) {
   .update-profile input,
   .update-profile textarea {
-    width: 50%; /* Set a specific width for desktop devices */
+    width: 50%; 
   }
 }
