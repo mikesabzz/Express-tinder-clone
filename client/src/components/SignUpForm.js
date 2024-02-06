@@ -32,8 +32,9 @@ class SignUpForm extends Component {
 
     handleTextInput = (e) => {
         const { name, value } = e.target
+        const lowercasedName = name === "email" ? value.toLowerCase() : value;
         this.setState(state => {
-            return { [name] : value}
+            return { [name] : lowercasedName}
         })
     }
 

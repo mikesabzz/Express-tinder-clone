@@ -47,7 +47,9 @@ class UpdateBio extends React.Component {
   };
 
   render() {
-    if (this.state.updated) { return <Redirect to="/dashboard"></Redirect> }
+    if (this.state.updated) {
+      return <Redirect to="/dashboard"></Redirect>;
+    }
     return (
       <div className="update-profile">
         <h1>Update Your Profile?</h1>
@@ -58,68 +60,47 @@ class UpdateBio extends React.Component {
           <textarea name="bio" type="text" value={this.state.bio} />
           <br />
           <div className="radio-row">
-            <span>
-              <b>Gender</b>
-              <label htmlFor="gender-male">male</label>
-              <input
-                id="gender-male"
-                type="radio"
+            <span className="dropdown">
+              <label htmlFor="gender-select">
+                <b>Gender</b>
+              </label>
+              <select
+                id="gender-select"
                 name="gender"
-                value="male"
-                checked={this.state.gender === "male"}
+                value={this.state.gender}
                 onChange={this.handleChange}
-              />
-              <label htmlFor="gender-female">female</label>
-              <input
-                id="gender-female"
-                type="radio"
-                name="gender"
-                value="female"
-                checked={this.state.gender === "female"}
-                onChange={this.handleChange}
-              />
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
             </span>
           </div>
           <div className="radio-row">
-            <span>
-              <b>Gender Interest</b>
-              <label htmlFor="interest-men">men</label>
-              <input
-                id="interest-men"
-                type="radio"
+            <span className="dropdown">
+              <label htmlFor="gender-select">
+                <b>Interest</b>
+              </label>
+              <select
+                id="interest-select"
                 name="gender_preference"
-                value="men"
-                checked={this.state.gender_preference === "men"}
+                value={this.state.gender_preference}
                 onChange={this.handleChange}
-              />
-              <label htmlFor="interest-women">women</label>
-              <input
-                id="interest-women"
-                type="radio"
-                name="gender_preference"
-                value="women"
-                checked={this.state.gender_preference === "women"}
-                onChange={this.handleChange}
-              />
-              <label htmlFor="interest-either">either</label>
-              <input
-                id="interest-either"
-                type="radio"
-                name="gender_preference"
-                value="either"
-                checked={this.state.gender_preference === "either"}
-                onChange={this.handleChange}
-              />
+              >
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="either">Either</option>
+              </select>
             </span>
           </div>
           <label htmlFor="location">Location:</label>
           <input name="location" type="text" value={this.state.location} />
-          <div className="submit"><input type="submit" /></div>
+          <div className="submit">
+            <input type="submit" />
+          </div>
         </form>
       </div>
     );
   }
 }
-
 
 export default UpdateBio;

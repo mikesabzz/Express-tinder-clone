@@ -33,9 +33,9 @@ handleSubmitForm = async (event) => {
 
 handleTextInput = (event) => {
     const { name, value }= event.target
-
+    const lowercasedName = name === "email" ? value.toLowerCase() : value;
     this.setState(state => {
-        return { [name] : value}
+        return { [name] : lowercasedName}
     })
 }
     render() {
